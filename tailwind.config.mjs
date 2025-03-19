@@ -1,5 +1,9 @@
 import tailwindcssAnimate from 'tailwindcss-animate'
 import typography from '@tailwindcss/typography'
+import fluid from 'fluid-tailwind'
+import containersPlugin from './src/lib/tailwind/containers/containers-plugin'
+import bootGap from './src/lib/tailwind/boot-gap'
+import clipPath from 'tailwind-clip-path'
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -10,7 +14,7 @@ const config = {
     './src/**/*.{ts,tsx}',
   ],
   darkMode: ['selector', '[data-theme="dark"]'],
-  plugins: [tailwindcssAnimate, typography],
+  plugins: [tailwindcssAnimate, typography, fluid, containersPlugin, bootGap, clipPath],
   prefix: '',
   safelist: [
     'lg:col-span-4',
@@ -94,8 +98,8 @@ const config = {
         warning: 'hsl(var(--warning))',
       },
       fontFamily: {
-        mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
+        primary: ['var(--font-macgen)'],
+        secondary: ['var(--font-acumin-pro)'],
       },
       keyframes: {
         'accordion-down': {
@@ -114,8 +118,33 @@ const config = {
               '--tw-prose-body': 'var(--text)',
               '--tw-prose-headings': 'var(--text)',
               h1: {
-                fontWeight: 'normal',
+                fontFamily: 'var(--font-macgen)',
+                fontSize: '100px',
+                fontWeight: '400',
+                lineHeight: '110%',
                 marginBottom: '0.25em',
+              },
+              h2: {
+                fontFamily: 'var(--font-macgen)',
+                fontSize: '48px',
+                fontWeight: '400',
+                lineHeight: '120%',
+              },
+              h3: {
+                fontFamily: 'var(--font-macgen)',
+                fontSize: '32px',
+                fontWeight: 'normal',
+                lineHeight: '100%',
+              },
+              'p, span, a, body': {
+                fontFamily: 'var(--font-acumin-pro)',
+                fontSize: '16px',
+                lineHeight: '155%',
+              },
+              h5: {
+                fontFamily: 'var(--font-acumin-pro)',
+                fontSize: '14px',
+                fontWeight: '500',
               },
             },
           ],
@@ -123,25 +152,14 @@ const config = {
         base: {
           css: [
             {
-              h1: {
-                fontSize: '2.5rem',
-              },
-              h2: {
-                fontSize: '1.25rem',
-                fontWeight: 600,
-              },
+              // Remove conflicting styles or adjust as needed
             },
           ],
         },
         md: {
           css: [
             {
-              h1: {
-                fontSize: '3.5rem',
-              },
-              h2: {
-                fontSize: '1.5rem',
-              },
+              // Remove conflicting styles or adjust as needed
             },
           ],
         },
