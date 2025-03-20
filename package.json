@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@payloadcms/admin-bar": "latest",
-    "@payloadcms/db-sqlite": "latest",
+    "@payloadcms/db-mongodb": "latest",
     "@payloadcms/live-preview-react": "latest",
     "@payloadcms/next": "latest",
     "@payloadcms/payload-cloud": "latest",
@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
-    "@tailwindcss/typography": "^0.5.13",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/escape-html": "^1.0.2",
     "@types/node": "22.5.4",
     "@types/react": "19.0.10",
