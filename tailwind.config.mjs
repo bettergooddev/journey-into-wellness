@@ -105,9 +105,9 @@ const config = {
         secondary: {
           foreground: 'hsl(var(--secondary-foreground))',
           50: 'hsl(var(--secondary-50))',
+          light: 'hsl(var(--secondary-50))',
           100: 'hsl(var(--secondary-100))',
           200: 'hsl(var(--secondary-200))',
-          light: 'hsl(var(--secondary-200))',
           300: 'hsl(var(--secondary-300))',
           400: 'hsl(var(--secondary-400))',
           500: 'hsl(var(--secondary-500))',
@@ -143,34 +143,41 @@ const config = {
             {
               '--tw-prose-body': 'var(--text)',
               '--tw-prose-headings': 'var(--text)',
-              h1: {
+              'h1, .type-h1': {
                 fontFamily: 'var(--font-macgen)',
-                fontSize: '100px',
+                fontSize: '93px',
                 fontWeight: '400',
                 lineHeight: '110%',
                 marginBottom: '0.25em',
+                wordSpacing: '-0.085ch',
               },
-              h2: {
+              'h2, .type-h2': {
                 fontFamily: 'var(--font-macgen)',
                 fontSize: '48px',
                 fontWeight: '400',
                 lineHeight: '120%',
+                wordSpacing: '-0.085ch',
               },
-              h3: {
+              'h3, .type-h3': {
                 fontFamily: 'var(--font-macgen)',
                 fontSize: '32px',
                 fontWeight: 'normal',
                 lineHeight: '100%',
+                wordSpacing: '-0.085ch',
               },
-              'p, span, a, body': {
+              'p, span, a, body, .type-body': {
                 fontFamily: 'var(--font-acumin-pro)',
                 fontSize: '16px',
+                fontWeight: '300',
                 lineHeight: '155%',
               },
-              h5: {
+              'h5, .type-h5': {
                 fontFamily: 'var(--font-acumin-pro)',
                 fontSize: '14px',
                 fontWeight: '500',
+              },
+              body: {
+                color: 'hsl(var(--secondary-900))',
               },
             },
           ],

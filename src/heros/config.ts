@@ -1,11 +1,6 @@
 import type { Field } from 'payload'
 
-import {
-  FixedToolbarFeature,
-  HeadingFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
+import { HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '@/fields/linkGroup'
 
@@ -16,7 +11,7 @@ export const hero: Field = {
     {
       name: 'type',
       type: 'select',
-      defaultValue: 'lowImpact',
+      defaultValue: 'main',
       label: 'Type',
       options: [
         {
@@ -24,34 +19,33 @@ export const hero: Field = {
           value: 'none',
         },
         {
-          label: 'High Impact',
-          value: 'highImpact',
-        },
-        {
-          label: 'Medium Impact',
-          value: 'mediumImpact',
-        },
-        {
-          label: 'Low Impact',
-          value: 'lowImpact',
+          label: 'Main',
+          value: 'main',
         },
       ],
       required: true,
     },
     {
-      name: 'richText',
+      name: 'heading',
       type: 'richText',
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          ]
-        },
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+        ],
       }),
-      label: false,
+      label: 'Heading',
+    },
+    {
+      name: 'subheading',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+        ],
+      }),
+      label: 'Subheading',
     },
     linkGroup({
       overrides: {
@@ -61,9 +55,6 @@ export const hero: Field = {
     {
       name: 'media',
       type: 'upload',
-      admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
-      },
       relationTo: 'media',
       required: true,
     },
