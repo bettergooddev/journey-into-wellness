@@ -2,9 +2,9 @@
 
 import { usePayloadAPI, useRowLabel } from '@payloadcms/ui'
 import { OfferingsListBlock } from '@/payload-types'
-import { useEffect } from 'react'
 import { Offering } from '@/payload-types'
-export const RowLabel = () => {
+
+export const OfferingRowLabel = () => {
   const { data, rowNumber: rowNumberFromPayload } =
     useRowLabel<NonNullable<OfferingsListBlock['pitches']>[number]>()
 

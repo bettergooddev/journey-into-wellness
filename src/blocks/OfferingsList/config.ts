@@ -9,6 +9,25 @@ import {
 
 import { link } from '@/fields/link'
 
+const Information: Field[] = [
+  {
+    name: 'icon',
+    type: 'upload',
+    relationTo: 'media',
+    required: true,
+  },
+  {
+    name: 'heading',
+    type: 'text',
+    required: true,
+  },
+  {
+    name: 'description',
+    type: 'textarea',
+    required: true,
+  },
+]
+
 const Pitch: Field[] = [
   {
     name: 'offering',
@@ -16,16 +35,23 @@ const Pitch: Field[] = [
     relationTo: 'offerings',
     required: true,
   },
-
   {
-    name: 'customTitle',
-    type: 'text',
-    label: 'Custom Title (optional)',
+    name: 'information',
+    type: 'array',
+    minRows: 3,
+    maxRows: 3,
+    fields: Information,
+    admin: {
+      components: {
+        RowLabel: '@/blocks/OfferingsList/InformationRowLabel#InformationRowLabel',
+      },
+    },
   },
   {
-    name: 'customDescription',
-    type: 'textarea',
-    label: 'Custom Description (optional)',
+    name: 'image',
+    type: 'upload',
+    relationTo: 'media',
+    required: true,
   },
 ]
 
@@ -45,7 +71,7 @@ export const OfferingsList: Block = {
       admin: {
         initCollapsed: true,
         components: {
-          RowLabel: '@/blocks/OfferingsList/RowLabel#RowLabel',
+          RowLabel: '@/blocks/OfferingsList/OfferingRowLabel#OfferingRowLabel',
         },
       },
       fields: Pitch,

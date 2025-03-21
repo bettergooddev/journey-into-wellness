@@ -778,8 +778,15 @@ export interface OfferingsListBlock {
   pitches?:
     | {
         offering: string | Offering;
-        customTitle?: string | null;
-        customDescription?: string | null;
+        information?:
+          | {
+              icon: string | Media;
+              heading: string;
+              description: string;
+              id?: string | null;
+            }[]
+          | null;
+        image: string | Media;
         id?: string | null;
       }[]
     | null;
@@ -1262,8 +1269,15 @@ export interface OfferingsListBlockSelect<T extends boolean = true> {
     | T
     | {
         offering?: T;
-        customTitle?: T;
-        customDescription?: T;
+        information?:
+          | T
+          | {
+              icon?: T;
+              heading?: T;
+              description?: T;
+              id?: T;
+            };
+        image?: T;
         id?: T;
       };
   id?: T;
