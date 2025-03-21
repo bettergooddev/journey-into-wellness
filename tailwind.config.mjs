@@ -3,7 +3,6 @@ import typography from '@tailwindcss/typography'
 import fluid from 'fluid-tailwind'
 import containersPlugin from './src/lib/tailwind/containers/containers-plugin'
 import bootGap from './src/lib/tailwind/boot-gap'
-import clipPath from 'tailwind-clip-path'
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -14,7 +13,6 @@ const config = {
     './src/**/*.{ts,tsx}',
   ],
   darkMode: ['selector', '[data-theme="dark"]'],
-  plugins: [tailwindcssAnimate, typography, fluid, containersPlugin, bootGap, clipPath],
   prefix: '',
   safelist: [
     'lg:col-span-4',
@@ -151,22 +149,42 @@ const config = {
           ],
         },
         base: {
-          css: [
-            {
-              // Remove conflicting styles or adjust as needed
-            },
-          ],
+          css: [{}],
         },
         md: {
-          css: [
-            {
-              // Remove conflicting styles or adjust as needed
-            },
-          ],
+          css: [{}],
         },
       }),
     },
   },
+  plugins: [
+    tailwindcssAnimate,
+    typography,
+    fluid,
+    containersPlugin,
+    bootGap,
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.clip-brain': {
+          clipPath: "url('#brainClip')",
+          aspectRatio: '643 / 677',
+        },
+        '.clip-bubbles': {
+          clipPath: "url('#bubblesClip')",
+          aspectRatio: '577 / 555',
+        },
+        '.clip-corner': {
+          clipPath: "url('#cornerClip')",
+          aspectRatio: '577 / 564',
+        },
+        '.clip-face': {
+          clipPath: "url('#faceClip')",
+          aspectRatio: '557 / 793',
+        },
+      }
+      addUtilities(newUtilities)
+    },
+  ],
 }
 
 export default config

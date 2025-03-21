@@ -9,7 +9,7 @@ type ObjectWithPossibleIds<T> = T extends (infer U)[]
   : T extends object
     ? {
         [K in keyof T]: ObjectWithPossibleIds<T[K]>
-      } & (T extends WithId ? WithKey : {})
+      } & WithKey // Add key to all objects, not just those with an id
     : T
 
 /**

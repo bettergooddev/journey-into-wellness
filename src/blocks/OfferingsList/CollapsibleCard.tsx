@@ -30,10 +30,11 @@ export function CollapsibleCard({
 
       {Array.isArray(offering.links) && offering.links.length > 0 && (
         <ul className="flex gap-4 mt-8">
-          {offering.links.map(({ link }, i) => {
+          {offering.links.map(({ key, link }) => {
+            const { key: _, ...linkProps } = link
             return (
-              <li key={i}>
-                <CMSLink {...link} />
+              <li key={key}>
+                <CMSLink {...linkProps} />
               </li>
             )
           })}
