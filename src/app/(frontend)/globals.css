@@ -164,7 +164,7 @@ html[data-theme='light'] {
     line-height: 142.5%;
   }
 
-  h5, .type-h5, .prose h5 {
+  h5, .type-h5, .type-caption, .prose h5 {
     font-family: var(--font-acumin-pro);
     font-size: 14px;
     font-weight: 500;

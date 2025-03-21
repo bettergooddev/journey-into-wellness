@@ -60,7 +60,7 @@ export const Offerings: CollectionConfig = {
       required: true,
     },
     linkGroup({
-      appearances: ['default', 'outline'],
+      appearances: ['default', 'primary', 'outline'],
       overrides: {
         maxRows: 2,
       },

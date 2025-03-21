@@ -68,6 +68,7 @@ export const OfferingsList: Block = {
       name: 'pitches',
       type: 'array',
       label: 'Pitch',
+      required: true,
       admin: {
         initCollapsed: true,
         components: {

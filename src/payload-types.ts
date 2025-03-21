@@ -775,21 +775,19 @@ export interface FeaturesBlock {
  */
 export interface OfferingsListBlock {
   heading?: string | null;
-  pitches?:
-    | {
-        offering: string | Offering;
-        information?:
-          | {
-              icon: string | Media;
-              heading: string;
-              description: string;
-              id?: string | null;
-            }[]
-          | null;
-        image: string | Media;
-        id?: string | null;
-      }[]
-    | null;
+  pitches: {
+    offering: string | Offering;
+    information?:
+      | {
+          icon: string | Media;
+          heading: string;
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+    image: string | Media;
+    id?: string | null;
+  }[];
   id?: string | null;
   blockName?: string | null;
   blockType: 'offeringsList';
@@ -838,7 +836,7 @@ export interface Offering {
           /**
            * Choose how the link should be rendered.
            */
-          appearance?: ('default' | 'outline') | null;
+          appearance?: ('default' | 'primary' | 'outline') | null;
         };
         id?: string | null;
       }[]

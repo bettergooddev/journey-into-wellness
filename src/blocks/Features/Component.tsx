@@ -15,7 +15,7 @@ export const FeaturesBlock: React.FC<FeaturesBlockProps> = (props) => {
 
   return (
     <div className="container-small mx-auto px-4 lg:px-6">
-      <h2 className="text-center -mb-6">{heading}</h2>
+      <h2 className="text-center -mb-6 -mt-6">{heading}</h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-14 mx-auto mt-heading">
         {processedFeatures?.map((feature) => (
