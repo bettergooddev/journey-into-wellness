@@ -13,7 +13,7 @@ export function InformationList({
 
   return (
     <>
-      <div className="hidden md:flex relative clip-brain self-center w-full">
+      <div className="hidden lg:flex relative clip-brain self-center w-full">
         <Media
           className="size-full"
           imgClassName="size-full object-cover"
@@ -23,9 +23,9 @@ export function InformationList({
         />
       </div>
 
-      <br className="hidden md:block" />
+      <br className="hidden lg:block" />
 
-      <div className="space-y-32 mt-32 mb-0 md:mb-64">
+      <div className="space-y-[4rem] mt-20 lg:space-y-32 lg:mt-32 mb-0 lg:mb-64">
         {information.map(({ icon, heading, description, key }) => (
           <div className="flex" key={key}>
             <div className="grid grid-cols-[1.35rem,auto] gap-y-3 gap-x-5">

@@ -20,7 +20,7 @@ export const FeaturesBlock: React.FC<FeaturesBlockProps> = (props) => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-14 mx-auto mt-heading">
         {processedFeatures?.map((feature) => (
           <div className="flex flex-col items-center text-center" key={feature.key}>
-            <div className="relative size-[11rem] mb-2">
+            <div className="relative size-[9rem] mb-2">
               <Media fill priority resource={feature.image} />
             </div>
             <h3 className="mb-3">{feature.heading}</h3>

@@ -20,12 +20,12 @@ export const OfferingsListBlock: React.FC<OfferingsListBlockProps> = (props) => 
   return (
     <>
       <div className="bg-primary py-heading text-center">
-        <h2 className="container-small text-primary-50 pb-[4rem] md:pb-[8rem]">{heading}</h2>
+        <h2 className="container-small text-primary-50 pb-[4rem] lg:pb-[8rem]">{heading}</h2>
       </div>
 
-      <div className="rounded-t-[4rem] md:rounded-t-[8rem] -mt-[4rem] md:-mt-[8rem] relative bg-gradient-to-b from-primary-100 to-secondary-light pt-[1.35rem] md:pt-[8rem] pb-[4rem] md:pb-[8rem]">
+      <div className="rounded-t-[4rem] lg:rounded-t-[8rem] -mt-[4rem] lg:-mt-[8rem] relative bg-gradient-to-b from-primary-100 to-secondary-light pt-[1.35rem] lg:pt-[8rem] pb-[4rem] lg:pb-[8rem]">
         <div className="container-large">
-          <div className="grid md:grid-cols-2 md:grid-rows-[auto,auto] gap-8 md:gap-12 lg:gap-16">
+          <div className="grid lg:grid-cols-2 lg:grid-rows-[auto,auto] gap-x-24 items-center">
             <CollapsibleCard pitch={pitch} />
             <InformationList pitch={pitch} />
           </div>
