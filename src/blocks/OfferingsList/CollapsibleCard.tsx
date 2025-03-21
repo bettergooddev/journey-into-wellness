@@ -15,7 +15,7 @@ export function CollapsibleCard({
   if (typeof offering === 'string') return
 
   return (
-    <div className="md:sticky md:top-8 self-start bg-secondary-light rounded-[2.5rem] p-10">
+    <div className="md:sticky md:top-8 self-start bg-secondary-light md:rounded-[2.5rem] rounded-[3.15rem] p-10">
       <Badge>Live Session</Badge>
       <h2 className="mt-4">{offering.name}</h2>
 
@@ -29,12 +29,12 @@ export function CollapsibleCard({
       <p className="opacity-60 mt-12">{offering.description}</p>
 
       {Array.isArray(offering.links) && offering.links.length > 0 && (
-        <ul className="flex gap-4 mt-8">
+        <ul className="flex gap-4 mt-8 flex-wrap">
           {offering.links.map(({ key, link }) => {
             const { key: _, ...linkProps } = link
             return (
-              <li key={key}>
-                <CMSLink {...linkProps} />
+              <li key={key} className="md:w-min w-full">
+                <CMSLink {...linkProps} className=" w-full" />
               </li>
             )
           })}
