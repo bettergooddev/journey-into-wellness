@@ -5,15 +5,19 @@ import { Media } from '@/components/Media'
 
 export function InformationList({
   pitch: pitchProp,
+  index,
 }: {
   pitch: OfferingsListBlockProps['pitches'][number]
+  index: number
 }) {
   const pitch = appendKeys(pitchProp)
   const information = pitch.information!
 
+  const mask = index === 0 ? 'clip-brain' : 'clip-face scale-[0.80] -my-8'
+
   return (
     <>
-      <div className="hidden lg:flex relative clip-brain self-center w-full">
+      <div className={`hidden lg:flex relative ${mask} self-center w-full`}>
         <Media
           className="size-full"
           imgClassName="size-full object-cover"
