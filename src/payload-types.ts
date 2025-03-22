@@ -798,8 +798,12 @@ export interface OfferingsListBlock {
  */
 export interface Offering {
   id: string;
-  type: 'session' | 'course';
+  type: 'session' | 'course' | 'bundle';
   name: string;
+  price: number;
+  enableDiscount?: boolean | null;
+  discountType?: ('fixed' | 'percentage') | null;
+  discountAmount?: number | null;
   tagline: string;
   highlights: {
     root: {
@@ -1448,6 +1452,10 @@ export interface UsersSelect<T extends boolean = true> {
 export interface OfferingsSelect<T extends boolean = true> {
   type?: T;
   name?: T;
+  price?: T;
+  enableDiscount?: T;
+  discountType?: T;
+  discountAmount?: T;
   tagline?: T;
   highlights?: T;
   description?: T;

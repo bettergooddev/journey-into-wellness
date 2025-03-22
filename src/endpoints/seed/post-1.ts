@@ -7,11 +7,7 @@ export type PostArgs = {
   author: User
 }
 
-export const post1: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> = ({
-  heroImage,
-  blockImage,
-  author,
-}) => {
+export const post1: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> = ({ heroImage, blockImage, author }) => {
   return {
     slug: 'digital-horizons',
     _status: 'published',

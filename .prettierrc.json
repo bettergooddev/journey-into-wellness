@@ -1,6 +1,8 @@
 {
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "tailwindFunctions": ["tv"],
+  "printWidth": 125,
   "singleQuote": true,
   "trailingComma": "all",
-  "printWidth": 100,
   "semi": false
 }

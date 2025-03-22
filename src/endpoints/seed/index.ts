@@ -10,28 +10,14 @@ import { post1 } from './post-1'
 import { post2 } from './post-2'
 import { post3 } from './post-3'
 
-const collections: CollectionSlug[] = [
-  'categories',
-  'media',
-  'pages',
-  'posts',
-  'forms',
-  'form-submissions',
-  'search',
-]
+const collections: CollectionSlug[] = ['categories', 'media', 'pages', 'posts', 'forms', 'form-submissions', 'search']
 const globals: GlobalSlug[] = ['header', 'footer']
 
 // Next.js revalidation errors are normal when seeding the database without a server running
 // i.e. running `yarn seed` locally instead of using the admin UI within an active app
 // The app is not running to revalidate the pages and so the API routes are not available
 // These error messages can be ignored: `Error hitting revalidate route for...`
-export const seed = async ({
-  payload,
-  req,
-}: {
-  payload: Payload
-  req: PayloadRequest
-}): Promise<void> => {
+export const seed = async ({ payload, req }: { payload: Payload; req: PayloadRequest }): Promise<void> => {
   payload.logger.info('Seeding database...')
 
   // we need to clear the media directory before seeding
@@ -56,9 +42,7 @@ export const seed = async ({
     ),
   )
 
-  await Promise.all(
-    collections.map((collection) => payload.db.deleteMany({ collection, req, where: {} })),
-  )
+  await Promise.all(collections.map((collection) => payload.db.deleteMany({ collection, req, where: {} })))
 
   await Promise.all(
     collections

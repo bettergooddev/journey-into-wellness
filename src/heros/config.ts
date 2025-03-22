@@ -29,10 +29,7 @@ export const hero: Field = {
       name: 'heading',
       type: 'richText',
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => [
-          ...rootFeatures,
-          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-        ],
+        features: ({ rootFeatures }) => [...rootFeatures, HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] })],
       }),
       label: 'Heading',
     },
@@ -40,10 +37,7 @@ export const hero: Field = {
       name: 'subheading',
       type: 'richText',
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => [
-          ...rootFeatures,
-          HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
-        ],
+        features: ({ rootFeatures }) => [...rootFeatures, HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] })],
       }),
       label: 'Subheading',
     },

@@ -27,12 +27,7 @@ export const Textarea: React.FC<
         )}
       </Label>
 
-      <TextAreaComponent
-        defaultValue={defaultValue}
-        id={name}
-        rows={rows}
-        {...register(name, { required: required })}
-      />
+      <TextAreaComponent defaultValue={defaultValue} id={name} rows={rows} {...register(name, { required: required })} />
 
       {errors[name] && <Error name={name} />}
     </Width>

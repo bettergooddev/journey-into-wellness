@@ -11,6 +11,8 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    './src/**/**/*.{ts,tsx}',
+    './src/collections/**/*.{ts,tsx}',
   ],
   darkMode: ['selector', '[data-theme="dark"]'],
   prefix: '',

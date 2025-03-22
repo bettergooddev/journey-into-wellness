@@ -36,11 +36,7 @@ export const appendKeys = <T>(obj: T): ObjectWithPossibleIds<T> => {
 
     // Process all properties recursively
     for (const key in result) {
-      if (
-        Object.prototype.hasOwnProperty.call(result, key) &&
-        typeof result[key] === 'object' &&
-        result[key] !== null
-      ) {
+      if (Object.prototype.hasOwnProperty.call(result, key) && typeof result[key] === 'object' && result[key] !== null) {
         result[key] = appendKeys(result[key])
       }
     }

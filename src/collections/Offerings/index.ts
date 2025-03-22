@@ -1,9 +1,54 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig, Field } from 'payload'
 import { slugField } from '@/fields/slug' // adjust import path as needed
-import { authenticated } from '../access/authenticated'
-import { anyone } from '../access/anyone'
+import { authenticated } from '../../access/authenticated'
+import { anyone } from '../../access/anyone'
 import { linkGroup } from '@/fields/linkGroup'
 import { lexicalEditor, UnorderedListFeature } from '@payloadcms/richtext-lexical'
+
+const Discount: Field[] = [
+  {
+    name: 'enableDiscount',
+    type: 'checkbox',
+    label: 'Apply Discount',
+    required: false,
+  },
+  {
+    name: 'discountType',
+    type: 'select',
+    label: 'Discount Type',
+    options: [
+      { label: 'Fixed', value: 'fixed' },
+      { label: 'Percentage', value: 'percentage' },
+    ],
+    admin: {
+      condition: (data) => Boolean(data?.enableDiscount),
+    },
+  },
+  {
+    name: 'discountAmount',
+    type: 'number',
+    label: 'Discount Amount',
+    admin: {
+      condition: (data) => Boolean(data?.enableDiscount),
+    },
+    required: false,
+  },
+]
+
+const Price: Field[] = [
+  {
+    name: 'price',
+    type: 'number',
+    label: 'Price',
+    required: true,
+    admin: {
+      components: {
+        Description: '@/collections/Offerings/PriceDescription#PriceDescription',
+      },
+    },
+  },
+  ...Discount,
+]
 
 export const Offerings: CollectionConfig = {
   slug: 'offerings',
@@ -30,6 +75,7 @@ export const Offerings: CollectionConfig = {
       options: [
         { label: 'Session', value: 'session' },
         { label: 'Course', value: 'course' },
+        { label: 'Bundle', value: 'bundle' },
       ],
     },
     {
@@ -38,6 +84,7 @@ export const Offerings: CollectionConfig = {
       label: 'Name',
       required: true,
     },
+    ...Price,
     {
       name: 'tagline',
       type: 'text',

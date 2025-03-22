@@ -14,7 +14,6 @@
   }
 
   :root {
-
     --primary-50: 73 36% 95%;
     --primary-100: 71 31% 89%;
     --primary-200: 72 33% 80%;
@@ -114,11 +113,10 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground min-h-[100vh] flex flex-col;
+    @apply flex min-h-[100vh] flex-col bg-background text-foreground;
     color: hsl(var(--secondary-900));
   }
 }
-
 
 html {
   opacity: 0;
@@ -129,9 +127,10 @@ html[data-theme='light'] {
   opacity: initial;
 }
 
-
 @layer components {
-  h1, .type-h1, .prose h1 {
+  h1,
+  .type-h1,
+  .prose h1 {
     font-family: var(--font-macgen);
     font-size: 93px;
     font-weight: 400;
@@ -140,7 +139,9 @@ html[data-theme='light'] {
     word-spacing: -0.085ch;
   }
 
-  h2, .type-h2, .prose h2 {
+  h2,
+  .type-h2,
+  .prose h2 {
     font-family: var(--font-macgen);
     font-size: 48px;
     font-weight: 400;
@@ -148,7 +149,9 @@ html[data-theme='light'] {
     word-spacing: -0.085ch;
   }
 
-  h3, .type-h3, .prose h3 {
+  h3,
+  .type-h3,
+  .prose h3 {
     font-family: var(--font-macgen);
     /* font-size: 32px; */
     font-size: 28px;
@@ -157,14 +160,23 @@ html[data-theme='light'] {
     word-spacing: -0.085ch;
   }
 
-  p, span, a, .type-body, .prose p, .prose span, .prose a {
+  p,
+  span,
+  a,
+  .type-body,
+  .prose p,
+  .prose span,
+  .prose a {
     font-family: var(--font-acumin-pro);
     font-size: 16px;
     font-weight: 300;
     line-height: 142.5%;
   }
 
-  h5, .type-h5, .type-caption, .prose h5 {
+  h5,
+  .type-h5,
+  .type-caption,
+  .prose h5 {
     font-family: var(--font-acumin-pro);
     font-size: 14px;
     font-weight: 500;

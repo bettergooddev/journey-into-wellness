@@ -11,11 +11,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { useEventListener } from 'usehooks-ts'
 import { Info } from 'lucide-react'
 import Lenis from 'lenis'
-export function CollapsibleCard({
-  pitch: pitchProp,
-}: {
-  pitch: NonNullable<OfferingsListBlockProps['pitches']>[number]
-}) {
+export function CollapsibleCard({ pitch: pitchProp }: { pitch: NonNullable<OfferingsListBlockProps['pitches']>[number] }) {
   const pitch = appendKeys(pitchProp)
   const { offering } = pitch
 
@@ -65,17 +61,17 @@ export function CollapsibleCard({
   return (
     <motion.div
       ref={cardRef}
-      className="lg:sticky lg:top-28 h-full relative"
+      className="relative h-full lg:sticky lg:top-28"
       layout="position"
       transition={{
         layout: { duration: 0.4, ease: 'easeOut' },
       }}
     >
-      <div className="lg:absolute lg:top-1/2 lg:left-0 w-full lg:-translate-y-1/2 lg:transform shadow-lg bg-secondary-light lg:rounded-[2.5rem] rounded-[3.15rem] mt-5 lg:mt-0  p-10 relative">
+      <div className="relative mt-5 w-full rounded-[3.15rem] bg-secondary-light p-10 shadow-lg lg:absolute lg:left-0 lg:top-1/2 lg:mt-0 lg:-translate-y-1/2 lg:transform lg:rounded-[2.5rem]">
         <AnimatePresence mode="sync">
           {isStuck && (
             <motion.div
-              className="absolute top-6 right-4 "
+              className="absolute right-4 top-6"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
@@ -83,7 +79,7 @@ export function CollapsibleCard({
             >
               <Button variant="ghost" asChild>
                 <div onClick={onInfoClick}>
-                  <Info className="size-6 [&_circle]:stroke-none !stroke-secondary fill-secondary/15 cursor-pointer !p-0 opacity-75 hover:opacity-100 transition-opacity" />
+                  <Info className="size-6 cursor-pointer fill-secondary/15 !stroke-secondary !p-0 opacity-75 transition-opacity hover:opacity-100 [&_circle]:stroke-none" />
                 </div>
               </Button>
             </motion.div>
@@ -99,18 +95,14 @@ export function CollapsibleCard({
               transition={{ duration: 0.3 }}
             >
               <Badge>Live Session</Badge>
-              <div className="h-4 block" />
+              <div className="block h-4" />
             </motion.div>
           )}
         </AnimatePresence>
 
         <h2>{offering.name}</h2>
 
-        <motion.p
-          className="mt-1"
-          animate={{ opacity: isStuck ? 0.5 : 1 }}
-          transition={{ duration: 0.3 }}
-        >
+        <motion.p className="mt-1" animate={{ opacity: isStuck ? 0.5 : 1 }} transition={{ duration: 0.3 }}>
           {offering.tagline}
         </motion.p>
 
@@ -124,13 +116,10 @@ export function CollapsibleCard({
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="h-9 block" />
-                <RichText
-                  className="prose [&_*]:type-body [&_*::marker]:text-primary/45"
-                  data={offering.highlights}
-                />
+                <div className="block h-9" />
+                <RichText className="[&_*]:type-body prose [&_*::marker]:text-primary/45" data={offering.highlights} />
 
-                <div className="h-12 block" />
+                <div className="block h-12" />
                 <p className="opacity-60">{offering.description}</p>
               </motion.div>
             </>
@@ -138,12 +127,12 @@ export function CollapsibleCard({
         </AnimatePresence>
 
         {Array.isArray(offering.links) && offering.links.length > 0 && (
-          <ul className="flex gap-4 mt-8 flex-wrap">
+          <ul className="mt-8 flex flex-wrap gap-4">
             {offering.links.map(({ key, link }) => {
               const { key: _, ...linkProps } = link
               return (
-                <li key={key} className="lg:w-min w-full">
-                  <CMSLink {...linkProps} className=" w-full" />
+                <li key={key} className="w-full lg:w-min">
+                  <CMSLink {...linkProps} className="w-full" />
                 </li>
               )
             })}
