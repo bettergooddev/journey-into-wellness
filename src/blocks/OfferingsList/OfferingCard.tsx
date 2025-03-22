@@ -11,7 +11,8 @@ import { AnimatePresence, motion } from 'motion/react'
 import { useEventListener } from 'usehooks-ts'
 import { Info } from 'lucide-react'
 import Lenis from 'lenis'
-export function CollapsibleCard({
+
+export function OfferingCard({
   offering: offeringProp,
 }: {
   offering: NonNullable<OfferingsListBlockProps['pitches']>[number]['offering']

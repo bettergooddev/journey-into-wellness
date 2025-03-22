@@ -1,15 +1,9 @@
-import { cn } from '@/utilities/ui'
 import React from 'react'
-import RichText from '@/components/RichText'
 
 import type { OfferingsListBlock as OfferingsListBlockProps } from '@/payload-types'
 
-import { CMSLink } from '../../components/Link'
-import { BookOpen, Heart, Shield } from 'lucide-react'
-import Image from 'next/image'
 import { appendKeys } from '@/utilities/appendKeys'
-import { CollapsibleCard } from './CollapsibleCard'
-import { Media } from '@/components/Media'
+import { OfferingCard } from './OfferingCard'
 import { InformationList } from './InformationList'
 
 export const OfferingsListBlock: React.FC<OfferingsListBlockProps> = (props) => {
@@ -30,7 +24,7 @@ export const OfferingsListBlock: React.FC<OfferingsListBlockProps> = (props) => 
         >
           <div className="container-large">
             <div className="grid items-center gap-x-24 lg:grid-cols-2 lg:grid-rows-[auto,auto]">
-              <CollapsibleCard offering={pitch.offering} />
+              <OfferingCard offering={pitch.offering} />
               <InformationList pitch={pitch} index={index} />
             </div>
           </div>
