@@ -6,6 +6,7 @@ import { Archive } from '@/blocks/ArchiveBlock/config'
 import { CallToAction } from '@/blocks/CallToAction/config'
 import { Content } from '@/blocks/Content/config'
 import { OfferingsList } from '@/blocks/OfferingsList/config'
+import { Pricing } from '@/blocks/Pricing/config'
 import { FormBlock } from '@/blocks/Form/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { Features } from '@/blocks/Features/config'
@@ -77,7 +78,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Features, OfferingsList],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Features, OfferingsList, Pricing],
               required: true,
               admin: {
                 initCollapsed: true,

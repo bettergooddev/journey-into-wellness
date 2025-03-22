@@ -3,7 +3,7 @@ import { slugField } from '@/fields/slug' // adjust import path as needed
 import { authenticated } from '../../access/authenticated'
 import { anyone } from '../../access/anyone'
 import { linkGroup } from '@/fields/linkGroup'
-import { lexicalEditor, UnorderedListFeature } from '@payloadcms/richtext-lexical'
+import { BoldFeature, lexicalEditor, UnorderedListFeature } from '@payloadcms/richtext-lexical'
 
 const Discount: Field[] = [
   {
@@ -73,7 +73,7 @@ export const Offerings: CollectionConfig = {
       label: 'Type',
       required: true,
       options: [
-        { label: 'Session', value: 'session' },
+        { label: 'Live Session', value: 'session' },
         { label: 'Course', value: 'course' },
         { label: 'Bundle', value: 'bundle' },
       ],
@@ -97,14 +97,13 @@ export const Offerings: CollectionConfig = {
       label: 'Highlights',
       required: true,
       editor: lexicalEditor({
-        features: () => [UnorderedListFeature()],
+        features: () => [UnorderedListFeature(), BoldFeature()],
       }),
     },
     {
       name: 'description',
       type: 'textarea',
       label: 'Description',
-      required: true,
     },
     linkGroup({
       appearances: ['default', 'primary', 'outline'],

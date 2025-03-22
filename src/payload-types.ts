@@ -216,6 +216,7 @@ export interface Page {
     | FormBlock
     | FeaturesBlock
     | OfferingsListBlock
+    | PricingBlock
   )[];
   meta?: {
     title?: string | null;
@@ -820,7 +821,7 @@ export interface Offering {
     };
     [k: string]: unknown;
   };
-  description: string;
+  description?: string | null;
   links?:
     | {
         link: {
@@ -847,6 +848,17 @@ export interface Offering {
     | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingBlock".
+ */
+export interface PricingBlock {
+  primary: string | Offering;
+  secondary: (string | Offering)[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pricing';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1145,6 +1157,7 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         features?: T | FeaturesBlockSelect<T>;
         offeringsList?: T | OfferingsListBlockSelect<T>;
+        pricing?: T | PricingBlockSelect<T>;
       };
   meta?:
     | T
@@ -1282,6 +1295,16 @@ export interface OfferingsListBlockSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingBlock_select".
+ */
+export interface PricingBlockSelect<T extends boolean = true> {
+  primary?: T;
+  secondary?: T;
   id?: T;
   blockName?: T;
 }

@@ -11,9 +11,12 @@ import { AnimatePresence, motion } from 'motion/react'
 import { useEventListener } from 'usehooks-ts'
 import { Info } from 'lucide-react'
 import Lenis from 'lenis'
-export function CollapsibleCard({ pitch: pitchProp }: { pitch: NonNullable<OfferingsListBlockProps['pitches']>[number] }) {
-  const pitch = appendKeys(pitchProp)
-  const { offering } = pitch
+export function CollapsibleCard({
+  offering: offeringProp,
+}: {
+  offering: NonNullable<OfferingsListBlockProps['pitches']>[number]['offering']
+}) {
+  const offering = appendKeys(offeringProp)
 
   const cardRef = useRef<HTMLDivElement>(null)
   const [isStuck, setIsStuck] = useState(false)
@@ -120,7 +123,7 @@ export function CollapsibleCard({ pitch: pitchProp }: { pitch: NonNullable<Offer
                 <RichText className="[&_*]:type-body prose [&_*::marker]:text-primary/45" data={offering.highlights} />
 
                 <div className="block h-12" />
-                <p className="opacity-60">{offering.description}</p>
+                {offering.description && <p className="opacity-60">{offering.description}</p>}
               </motion.div>
             </>
           )}

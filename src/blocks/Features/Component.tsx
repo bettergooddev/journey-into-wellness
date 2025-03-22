@@ -14,7 +14,7 @@ export const FeaturesBlock: React.FC<FeaturesBlockProps> = (props) => {
   const processedFeatures = appendKeys(featureItems)
 
   return (
-    <div className="container-small mx-auto px-4 lg:px-6">
+    <div className="container-small mx-auto">
       <h2 className="-mb-6 -mt-6 text-center">{heading}</h2>
 
       <div className="mx-auto mt-heading grid grid-cols-1 gap-14 lg:grid-cols-3">
