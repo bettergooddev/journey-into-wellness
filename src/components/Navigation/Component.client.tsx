@@ -5,11 +5,24 @@ import Link from 'next/link'
 import { motion, AnimatePresence, useMotionValueEvent, useScroll } from 'motion/react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/utilities/ui'
+import { tv } from 'tailwind-variants'
 import { Button } from '@/components/ui/button'
 import { Header } from '@/payload-types'
 import { useMobile } from '@/utilities/useMobile'
 import { CMSLink } from '../Link'
 import { appendKeys } from '@/utilities/appendKeys'
+
+const classes = {
+  wrapper: tv({
+    base: 'transition-[background-color] duration-150',
+    variants: {
+      theme: {
+        default: 'bg-secondary-light/95 shadow-lg backdrop-blur-sm',
+        top: 'bg-transparent !text-secondary-light shadow-none',
+      },
+    },
+  }),
+}
 
 export function NavigationClient({ data }: { data: Header }) {
   const navItemsProp = data.navItems || []
@@ -17,12 +30,16 @@ export function NavigationClient({ data }: { data: Header }) {
   const [isOpen, setIsOpen] = useState(false)
   const [visible, setVisible] = useState(true)
   const [isAtTop, setIsAtTop] = useState(true)
+  const [isAtVeryTop, setIsAtVeryTop] = useState(true)
 
   const isMobile = useMobile()
 
   useEffect(() => {
     if (!isMobile) {
       setIsOpen(false)
+    }
+    if (isMobile) {
+      setIsAtVeryTop(false)
     }
   }, [isMobile])
 
@@ -31,6 +48,13 @@ export function NavigationClient({ data }: { data: Header }) {
   useMotionValueEvent(scrollYProgress, 'change', (current) => {
     if (typeof current === 'number') {
       const direction = current - scrollYProgress.getPrevious()!
+
+      if (scrollYProgress.get() < 0.001) {
+        if (!isMobile) setIsAtVeryTop(true)
+      } else {
+        if (!isMobile) setIsAtVeryTop(false)
+      }
+
       if (scrollYProgress.get() < 0.05) {
         setIsAtTop(true)
       } else {
@@ -50,16 +74,22 @@ export function NavigationClient({ data }: { data: Header }) {
     }
   }, [isAtTop])
 
+  const theme = isAtVeryTop ? 'top' : 'default'
+
   return (
     <>
       <AnimatePresence mode="wait">
         <motion.header
-          className={cn('container-large fixed left-0 right-0 top-8 z-50 mx-auto transition-all duration-300')}
+          className={cn('container-large fixed left-0 right-0 top-8 z-50 mx-auto')}
           initial={{ y: -100 }}
           animate={{ y: visible ? 0 : -100 }}
-          transition={{ duration: 0.2 }}
         >
-          <div className="flex items-center justify-between rounded-full bg-secondary-light/95 px-6 py-2 pr-4 shadow-lg backdrop-blur-sm md:pr-2">
+          <div
+            className={cn(
+              classes.wrapper({ theme }),
+              'flex items-center justify-between rounded-full px-6 py-2 pr-4 md:pr-2',
+            )}
+          >
             <Link href="/">
               <h4>Journey Into Wellness</h4>
             </Link>
@@ -69,11 +99,18 @@ export function NavigationClient({ data }: { data: Header }) {
               <nav className="flex items-center gap-8">
                 {navItems.map(({ link }) => {
                   const { key, ...linkProps } = link
+
+                  const appearance = (() => {
+                    if (isAtVeryTop && linkProps.appearance === 'primary') return 'default'
+                    else if (!isAtVeryTop && linkProps.appearance === 'primary') return 'primary'
+                    else return 'link'
+                  })()
                   return (
                     <CMSLink
                       key={key}
                       {...linkProps}
-                      appearance={linkProps.appearance === 'default' ? 'link' : linkProps.appearance}
+                      appearance={appearance}
+                      className={'transition-[background-color] duration-150'}
                     />
                   )
                 })}
