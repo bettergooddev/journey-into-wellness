@@ -10,6 +10,7 @@ import { Pricing } from '@/blocks/Pricing/config'
 import { FormBlock } from '@/blocks/Form/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { Features } from '@/blocks/Features/config'
+import { Testimonials } from '@/blocks/Testimonials/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -23,7 +24,6 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
   access: {
@@ -78,7 +78,17 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Features, OfferingsList, Pricing],
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                Features,
+                OfferingsList,
+                Pricing,
+                Testimonials,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,
