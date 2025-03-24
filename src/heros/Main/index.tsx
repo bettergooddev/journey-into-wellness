@@ -34,7 +34,7 @@ export const MainHero: React.FC<Page['hero']> = ({ links, media, heading, subhea
         )}
       </div>
 
-      <div className="min-h-[85vh] select-none">
+      <div className="min-h-[90vh] select-none">
         {media && typeof media === 'object' && (
           <>
             <Media fill imgClassName="-z-10 object-cover scale-110" priority resource={media} />

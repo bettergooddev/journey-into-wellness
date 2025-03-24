@@ -26,7 +26,7 @@ const buttonVariants = cva(
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         // ghost: 'hover:bg-card hover:text-accent-foreground',
         ghost: '',
-        link: 'text-primary items-start justify-start underline-offset-4 hover:underline',
+        link: ' items-start justify-start underline-offset-4 hover:underline -mt-1',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
       },
     },

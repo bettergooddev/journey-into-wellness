@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValueEvent, useScroll } from 'motion/react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/utilities/ui'
 import { Button } from '@/components/ui/button'
@@ -15,6 +15,8 @@ export function NavigationClient({ data }: { data: Header }) {
   const navItemsProp = data.navItems || []
   const navItems = appendKeys(navItemsProp)
   const [isOpen, setIsOpen] = useState(false)
+  const [visible, setVisible] = useState(true)
+  const [isAtTop, setIsAtTop] = useState(true)
 
   const isMobile = useMobile()
 
@@ -24,15 +26,42 @@ export function NavigationClient({ data }: { data: Header }) {
     }
   }, [isMobile])
 
+  const { scrollYProgress } = useScroll()
+
+  useMotionValueEvent(scrollYProgress, 'change', (current) => {
+    if (typeof current === 'number') {
+      const direction = current! - scrollYProgress.getPrevious()!
+      if (scrollYProgress.get() < 0.05) {
+        setIsAtTop(true)
+      } else {
+        setIsAtTop(false)
+        if (direction < 0) setVisible(true)
+        else setVisible(false)
+      }
+    }
+  })
+
+  useEffect(() => {
+    if (isAtTop) {
+      setVisible(true)
+    }
+  }, [isAtTop])
+
   return (
-    <motion.header
-      className={cn('container-large fixed left-0 right-0 top-8 z-50 mx-auto transition-all duration-300')}
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 50 }}
-    >
-      <div className="rounded-full bg-white/95 px-6 py-2 shadow-md backdrop-blur-sm">
-        <div className="flex items-center justify-between">
+    <AnimatePresence mode="wait">
+      <motion.header
+        className={cn('container-large fixed left-0 right-0 top-8 z-50 mx-auto transition-all duration-300')}
+        initial={{
+          y: -100,
+        }}
+        animate={{
+          y: visible ? 0 : -100,
+        }}
+        transition={{
+          duration: 0.2,
+        }}
+      >
+        <div className="flex items-center justify-between rounded-full bg-secondary-light/95 px-6 py-2 pr-2 shadow-lg backdrop-blur-sm">
           <Link href="/" className="">
             <h4>Journey Into Wellness</h4>
           </Link>
@@ -40,24 +69,17 @@ export function NavigationClient({ data }: { data: Header }) {
           {/* Desktop Navigation */}
           <div className="hidden items-center gap-8 md:flex">
             <nav className="flex items-center gap-8">
-              {navItems.map(({ key, ...link }, index) => (
-                <motion.div
-                  key={key}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
-                >
-                  <CMSLink {...link} className="w-full" />
-                </motion.div>
-              ))}
+              {navItems.map(({ link }) => {
+                const { key, ...linkProps } = link
+                return (
+                  <CMSLink
+                    key={key}
+                    {...linkProps}
+                    appearance={linkProps.appearance == 'default' ? 'link' : linkProps.appearance}
+                  />
+                )
+              })}
             </nav>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.7 }}
-            >
-              <Button className="rounded-full bg-[#3a4d39] px-6 text-white hover:bg-[#4a5d49]">Book Session</Button>
-            </motion.div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -119,7 +141,7 @@ export function NavigationClient({ data }: { data: Header }) {
             )}
           </AnimatePresence>
         </div>
-      </div>
-    </motion.header>
+      </motion.header>
+    </AnimatePresence>
   )
 }
