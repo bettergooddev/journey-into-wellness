@@ -32,31 +32,24 @@ export const FAQBlock: React.FC<FAQBlockProps> = (props) => {
 
       <Accordion type="single" collapsible className="w-full">
         {faqs?.map(({ key, ...faq }, i) => (
-          <motion.div
+          <AccordionItem
             key={key}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1 }}
-            className="relative after:absolute after:bottom-0 after:left-1/2 after:h-[1px] after:w-[calc(100%-1.5rem)] after:-translate-x-1/2 after:bg-secondary-dark/10"
+            value={`item-${i}`}
+            className="peer relative rounded-xl border-0 px-6 transition-colors after:absolute after:bottom-0 after:left-1/2 after:h-[1px] after:w-[calc(100%-1.5rem)] after:-translate-x-1/2 after:bg-secondary-dark/10 after:transition-colors hover:bg-secondary-100/50 data-[state=open]:bg-secondary-100/50"
           >
-            <AccordionItem
-              value={`item-${i}`}
-              className="rounded-xl border-0 px-6 transition-colors hover:bg-secondary-100/50 data-[state=open]:bg-secondary-100/50"
-            >
-              <AccordionTrigger className="py-4 hover:no-underline">
-                <h3 className="type-body font-medium">{faq.question}</h3>
-              </AccordionTrigger>
-              <AccordionContent>
-                <motion.p
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="type-body pb-4 pt-2 !opacity-65"
-                >
-                  {faq.answer}
-                </motion.p>
-              </AccordionContent>
-            </AccordionItem>
-          </motion.div>
+            <AccordionTrigger className="py-4 hover:no-underline">
+              <h3 className="type-body font-medium">{faq.question}</h3>
+            </AccordionTrigger>
+            <AccordionContent>
+              <motion.p
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="type-body pb-4 pt-2 !opacity-65"
+              >
+                {faq.answer}
+              </motion.p>
+            </AccordionContent>
+          </AccordionItem>
         ))}
       </Accordion>
     </div>
