@@ -2,24 +2,8 @@
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { motion } from 'motion/react'
-import { ChevronDown } from 'lucide-react'
 import type { FAQBlock as FAQBlockProps } from '@/payload-types'
 import { appendKeys } from '@/utilities/appendKeys'
-
-const faqData = [
-  {
-    question: 'What is your return policy?',
-    answer: 'We offer a 30-day money-back guarantee on all products. No questions asked.',
-  },
-  {
-    question: 'How long does shipping take?',
-    answer: 'Standard shipping takes 3-5 business days. Express options available at checkout.',
-  },
-  {
-    question: 'Do you offer technical support?',
-    answer: 'Yes, our 24/7 technical support team is available via email and live chat.',
-  },
-]
 
 export const FAQBlock: React.FC<FAQBlockProps> = (props) => {
   const { heading, faqs: faqsProps } = props
