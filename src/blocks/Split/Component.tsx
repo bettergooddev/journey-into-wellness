@@ -36,7 +36,7 @@ export const SplitBlock: React.FC<SplitBlockProps> = (props) => {
   const clip = props.clip ?? 'face'
 
   return (
-    <div className="container-large grid grid-cols-1 gap-x-20 gap-y-12 py-16 md:grid-flow-dense md:grid-cols-2">
+    <div className="container-large grid grid-cols-1 items-center gap-x-20 gap-y-12 md:grid-flow-dense md:grid-cols-2">
       <div className={cn('order-2 flex flex-col justify-center', classes.body({ reverse }))}>
         {eyebrow && <span className="type-caption opacity-65">{eyebrow}</span>}
         {heading && <h2 className="mt-[0.45rem]">{heading}</h2>}
