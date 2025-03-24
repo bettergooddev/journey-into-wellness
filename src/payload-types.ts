@@ -892,6 +892,7 @@ export interface Testimonial {
     role: string;
     image: string | Media;
   };
+  name?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1566,6 +1567,7 @@ export interface TestimonialsSelect<T extends boolean = true> {
         role?: T;
         image?: T;
       };
+  name?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -13,6 +13,7 @@ import { Info } from 'lucide-react'
 import Lenis from 'lenis'
 import { tv } from 'tailwind-variants'
 import { cn } from '@/utilities/ui'
+import { getOfferingType } from '@/collections/Offerings/hooks/getOfferingType'
 
 const classes = {
   wrapper: tv({
@@ -119,18 +120,7 @@ export function OfferingCard({
 
   if (typeof offering === 'string') return
 
-  const offeringType = (() => {
-    switch (offering.type) {
-      case 'session':
-        return 'Live Session'
-      case 'course':
-        return 'Course'
-      case 'bundle':
-        return 'Bundle'
-      default:
-        return offering.type
-    }
-  })()
+  const offeringType = getOfferingType(offering)
 
   return (
     <motion.div

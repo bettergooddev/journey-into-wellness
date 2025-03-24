@@ -14,7 +14,7 @@ export const Testimonials: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'standout',
-    defaultColumns: ['standout', 'offering', 'updatedAt'],
+    defaultColumns: ['name', 'offering', 'standout', 'updatedAt'],
   },
   fields: [
     {
@@ -55,6 +55,26 @@ export const Testimonials: CollectionConfig = {
           required: true,
         },
       ],
+    },
+    {
+      // hidden but enables you to show the author name in the admin table
+      name: 'name',
+      type: 'text',
+      admin: {
+        hidden: true,
+      },
+      hooks: {
+        beforeChange: [
+          ({ data }) => {
+            return data?.author?.name || ''
+          },
+        ],
+        afterRead: [
+          ({ data }) => {
+            return data?.author?.name || ''
+          },
+        ],
+      },
     },
   ],
   hooks: {

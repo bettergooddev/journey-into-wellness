@@ -62,6 +62,7 @@ const config = {
       spacing: {
         section: '9rem',
         heading: '4rem',
+        container: '1.175rem',
       },
       colors: {
         accent: {
