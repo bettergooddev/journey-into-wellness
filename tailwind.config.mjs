@@ -171,18 +171,26 @@ const config = {
         '.clip-brain': {
           clipPath: "url('#brainClip')",
           aspectRatio: '643 / 677',
+          width: '100%!important',
+          height: 'auto!important',
         },
         '.clip-bubbles': {
           clipPath: "url('#bubblesClip')",
           aspectRatio: '577 / 555',
+          width: '100%!important',
+          height: 'auto!important',
         },
         '.clip-corner': {
           clipPath: "url('#cornerClip')",
           aspectRatio: '577 / 564',
+          width: '100%!important',
+          height: 'auto!important',
         },
         '.clip-face': {
           clipPath: "url('#faceClip')",
           aspectRatio: '557 / 793',
+          width: '100%!important',
+          height: 'auto!important',
         },
       }
       addUtilities(newUtilities)

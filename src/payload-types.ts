@@ -797,6 +797,7 @@ export interface OfferingsListBlock {
         }[]
       | null;
     image: string | Media;
+    clip?: ('face' | 'brain' | 'corner' | 'bubbles') | null;
     id?: string | null;
   }[];
   id?: string | null;
@@ -1434,6 +1435,7 @@ export interface OfferingsListBlockSelect<T extends boolean = true> {
               id?: T;
             };
         image?: T;
+        clip?: T;
         id?: T;
       };
   id?: T;

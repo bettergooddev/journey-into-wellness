@@ -48,6 +48,11 @@ const Pitch: Field[] = [
     relationTo: 'media',
     required: true,
   },
+  {
+    name: 'clip',
+    type: 'select',
+    options: ['face', 'brain', 'corner', 'bubbles'],
+  },
 ]
 
 export const OfferingsList: Block = {

@@ -2,6 +2,9 @@ import React from 'react'
 import type { OfferingsListBlock as OfferingsListBlockProps } from '@/payload-types'
 import { appendKeys } from '@/utilities/appendKeys'
 import { Media } from '@/components/Media'
+import { tv } from 'tailwind-variants'
+import { classes } from '../clips/classes'
+import { cn } from '@/utilities/ui'
 
 export function OfferingPitch({
   pitch: pitchProp,
@@ -13,11 +16,11 @@ export function OfferingPitch({
   const pitch = appendKeys(pitchProp)
   const information = pitch.information!
 
-  const mask = index === 0 ? 'clip-brain' : 'clip-face max-w-[24rem] ml-[7%]'
+  const clip = pitch.clip ?? 'face'
 
   return (
     <>
-      <div className={`relative hidden size-full self-center overflow-hidden lg:flex ${mask}`}>
+      <div className={cn(classes.clip({ clip }), 'relative hidden size-full self-center overflow-hidden lg:flex')}>
         <Media className="size-full" imgClassName={`size-full object-cover `} fill priority resource={pitch.image} />
       </div>
 

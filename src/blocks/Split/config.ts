@@ -1,5 +1,12 @@
 import type { Block } from 'payload'
-import { FixedToolbarFeature, HeadingFeature, InlineToolbarFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
+import {
+  FixedToolbarFeature,
+  HeadingFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+  OrderedListFeature,
+  UnorderedListFeature,
+} from '@payloadcms/richtext-lexical'
 
 export const Split: Block = {
   slug: 'split',
@@ -26,7 +33,13 @@ export const Split: Block = {
       required: false,
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {
-          return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
+          return [
+            ...rootFeatures,
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+            UnorderedListFeature(),
+            OrderedListFeature(),
+          ]
         },
       }),
     },
