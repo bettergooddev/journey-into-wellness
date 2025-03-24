@@ -60,7 +60,7 @@ const config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       spacing: {
-        section: '9rem',
+        section: '12rem',
         heading: '4rem',
         container: '1.175rem',
       },

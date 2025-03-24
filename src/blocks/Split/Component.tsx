@@ -40,7 +40,7 @@ export const SplitBlock: React.FC<SplitBlockProps> = (props) => {
       <div className={cn('order-2 flex flex-col justify-center', classes.body({ reverse }))}>
         {eyebrow && <span className="type-caption opacity-65">{eyebrow}</span>}
         {heading && <h2 className="mt-[0.45rem]">{heading}</h2>}
-        {subheading && <h4 className="mt-[0.5rem]">{subheading}</h4>}
+        {subheading && <h4 className="mt-[0.25rem]">{subheading}</h4>}
         {body && (
           <RichText
             data={body}
