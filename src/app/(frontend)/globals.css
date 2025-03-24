@@ -160,6 +160,15 @@ html[data-theme='light'] {
     word-spacing: -0.085ch;
   }
 
+  h4,
+  .type-h4,
+  .prose h4 {
+    font-family: var(--font-macgen);
+    font-size: 20px;
+    line-height: 100%;
+    word-spacing: -0.085ch;
+  }
+
   p,
   span,
   a,

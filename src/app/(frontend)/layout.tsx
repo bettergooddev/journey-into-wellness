@@ -18,6 +18,7 @@ import { getServerSideURL } from '@/utilities/getURL'
 
 import { acuminPro, macgen } from './fonts'
 import { ClipDefs } from '@/components/clips'
+import { Navigation } from '@/components/Navigation/Component'
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
 
@@ -30,13 +31,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body className="bg-secondary-light">
         <Providers>
-          <AdminBar
+          {/* <AdminBar
             adminBarProps={{
               preview: isEnabled,
             }}
-          />
+          /> */}
+          <Navigation />
 
-          <Header />
+          {/* <Header /> */}
           {children}
           <Footer />
         </Providers>
