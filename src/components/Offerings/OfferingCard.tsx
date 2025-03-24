@@ -144,7 +144,7 @@ export function OfferingCard({
       <div
         className={cn(
           classes.inner({ variant, theme }),
-          'relative mt-5 w-full rounded-[3.15rem] p-10 text-[var(--text-base)] lg:rounded-[2.5rem]',
+          'relative w-full rounded-[3.15rem] p-10 text-[var(--text-base)] lg:rounded-[2.5rem]',
         )}
       >
         <AnimatePresence mode="sync">
