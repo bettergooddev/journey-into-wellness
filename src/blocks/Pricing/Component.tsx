@@ -13,7 +13,6 @@ export const PricingBlock: React.FC<PricingBlockProps> = (props) => {
 
   const secondary = appendKeys(secondaryProp, { shallow: true })
 
-  console.log(secondary)
   return (
     <div className="container-large mx-auto grid gap-6 md:grid-cols-2">
       <OfferingCard offering={primary} variant="price" theme="primary" collapsible={false} collapsed={false} />
