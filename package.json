@@ -54,6 +54,7 @@
     "sharp": "0.32.6",
     "tailwind-clip-path": "^1.0.0",
     "tailwind-merge": "^2.3.0",
+    "tailwind-variants": "^1.0.0",
     "tailwindcss-animate": "^1.0.7",
     "usehooks-ts": "^3.1.1"
   },

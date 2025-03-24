@@ -37,8 +37,8 @@ export const MainHero: React.FC<Page['hero']> = ({ links, media, heading, subhea
       <div className="min-h-[85vh] select-none">
         {media && typeof media === 'object' && (
           <>
-            <Media fill imgClassName="-z-10 object-cover blur-sm scale-110" priority resource={media} />
-            <div className="absolute inset-0 -z-10 bg-primary-dark/20 bg-blend-multiply" />
+            <Media fill imgClassName="-z-10 object-cover scale-110" priority resource={media} />
+            <div className="absolute inset-0 -z-10 bg-primary-dark/40 bg-blend-multiply" />
           </>
         )}
       </div>

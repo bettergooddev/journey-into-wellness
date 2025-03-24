@@ -11,18 +11,75 @@ import { AnimatePresence, motion } from 'motion/react'
 import { useEventListener } from 'usehooks-ts'
 import { Info } from 'lucide-react'
 import Lenis from 'lenis'
+import { tv } from 'tailwind-variants'
+import { cn } from '@/utilities/ui'
+
+const classes = {
+  wrapper: tv({
+    variants: {
+      variant: {
+        pitch: 'lg:sticky lg:top-28',
+        price: '',
+      },
+    },
+  }),
+  inner: tv({
+    variants: {
+      variant: {
+        pitch: 'shadow-lg lg:absolute lg:left-0 lg:top-1/2 lg:mt-0 lg:-translate-y-1/2 lg:transform',
+        price: 'flex h-full flex-col shadow-lg',
+      },
+      theme: {
+        default: [
+          'bg-secondary-light',
+          '[--text-base:theme(colors.secondary.DEFAULT)] [--text-marker:theme(colors.secondary.DEFAULT/0.45)] [--text-muted:theme(colors.secondary.DEFAULT/0.65)]',
+        ],
+        primary: [
+          'bg-primary-100',
+          '[--text-base:theme(colors.primary.DEFAULT)] [--text-marker:theme(colors.primary.DEFAULT/0.45)] [--text-muted:theme(colors.primary.DEFAULT/0.65)]',
+        ],
+        'secondary-light': [
+          'bg-secondary-100/30',
+          '[--text-base:theme(colors.secondary.DEFAULT)] [--text-marker:theme(colors.secondary.DEFAULT/0.45)] [--text-muted:theme(colors.secondary.DEFAULT/0.65)]',
+        ],
+      },
+    },
+  }),
+  buttons: tv({
+    variants: {
+      variant: {
+        pitch: 'mt-8',
+        price: 'mt-auto pt-2',
+      },
+      theme: {
+        default: 'border-secondary bg-secondary text-[var(--text-base)]',
+        primary: 'border-primary bg-primary text-[var(--text-base)]',
+        'secondary-light': 'border-secondary bg-secondary text-[var(--text-base)]',
+      },
+    },
+  }),
+}
 
 export function OfferingCard({
   offering: offeringProp,
+  variant = 'pitch',
+  theme = 'default',
+  collapsible = true,
+  collapsed = true,
 }: {
   offering: NonNullable<OfferingsListBlockProps['pitches']>[number]['offering']
+  variant?: keyof typeof classes.wrapper.variants.variant
+  theme?: keyof typeof classes.inner.variants.theme
+  collapsible?: boolean
+  collapsed?: boolean
 }) {
   const offering = appendKeys(offeringProp)
 
   const cardRef = useRef<HTMLDivElement>(null)
-  const [isStuck, setIsStuck] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(collapsed)
 
   const onScroll = () => {
+    if (!collapsible) return
     if (!cardRef.current || !cardRef.current?.parentElement) return
     const container = cardRef.current.parentElement
 
@@ -30,7 +87,7 @@ export function OfferingCard({
     const containerRect = container.getBoundingClientRect()
     const distance = cardRect.top - containerRect.top
 
-    setIsStuck(distance > 200)
+    setIsCollapsed(distance > 200)
   }
 
   function onInfoClick() {
@@ -62,18 +119,36 @@ export function OfferingCard({
 
   if (typeof offering === 'string') return
 
+  const offeringType = (() => {
+    switch (offering.type) {
+      case 'session':
+        return 'Live Session'
+      case 'course':
+        return 'Course'
+      case 'bundle':
+        return 'Bundle'
+      default:
+        return offering.type
+    }
+  })()
+
   return (
     <motion.div
       ref={cardRef}
-      className="relative h-full lg:sticky lg:top-28"
+      className={cn(classes.wrapper({ variant }), 'relative h-full')}
       layout="position"
       transition={{
         layout: { duration: 0.4, ease: 'easeOut' },
       }}
     >
-      <div className="relative mt-5 w-full rounded-[3.15rem] bg-secondary-light p-10 shadow-lg lg:absolute lg:left-0 lg:top-1/2 lg:mt-0 lg:-translate-y-1/2 lg:transform lg:rounded-[2.5rem]">
+      <div
+        className={cn(
+          classes.inner({ variant, theme }),
+          'relative mt-5 w-full rounded-[3.15rem] p-10 text-[var(--text-base)] lg:rounded-[2.5rem]',
+        )}
+      >
         <AnimatePresence mode="sync">
-          {isStuck && (
+          {isCollapsed && (
             <motion.div
               className="absolute right-4 top-6"
               initial={{ opacity: 0, height: 0 }}
@@ -91,27 +166,28 @@ export function OfferingCard({
         </AnimatePresence>
 
         <AnimatePresence mode="sync">
-          {!isStuck && (
+          {!isCollapsed && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <Badge>Live Session</Badge>
+              <Badge variant={theme.includes('primary') ? 'primary' : 'secondary'}>{offeringType}</Badge>
               <div className="block h-4" />
             </motion.div>
           )}
         </AnimatePresence>
 
-        <h2>{offering.name}</h2>
+        {/* {collapsible || !collapsed ? <h2>{offering.name}</h2> : <h3>{offering.name}</h3>} */}
+        {!collapsed ? <h2>{offering.name}</h2> : <h3>{offering.name}</h3>}
 
-        <motion.p className="mt-1" animate={{ opacity: isStuck ? 0.5 : 1 }} transition={{ duration: 0.3 }}>
+        <motion.p className="mt-1 max-w-[48ch]" animate={{ opacity: isCollapsed ? 0.5 : 1 }} transition={{ duration: 0.3 }}>
           {offering.tagline}
         </motion.p>
 
         <AnimatePresence mode="sync">
-          {!isStuck && (
+          {!isCollapsed && (
             <>
               <motion.div
                 className="overflow-hidden"
@@ -121,22 +197,28 @@ export function OfferingCard({
                 transition={{ duration: 0.3 }}
               >
                 <div className="block h-9" />
-                <RichText className="[&_*]:type-body prose [&_*::marker]:text-primary/45" data={offering.highlights} />
-
-                <div className="block h-12" />
-                {offering.description && <p className="opacity-60">{offering.description}</p>}
+                <RichText
+                  className="[&_*]:type-body type-body prose max-w-[48ch] [&_*::marker]:text-[var(--text-marker)] [&_*]:text-[var(--text-base)] [&_li:has(strong)]:my-4 [&_li:has(strong)]:text-[var(--text-muted)] [&_li:has(strong)_strong]:text-[var(--text-base)] [&_strong+*]:text-[var(--text-muted)] [&_strong]:mb-0.5 [&_strong]:inline-block [&_strong]:font-semibold"
+                  data={offering.highlights}
+                />
+                {offering.description && (
+                  <>
+                    <div className="block h-12" />
+                    <p className="max-w-[48ch] opacity-60">{offering.description}</p>
+                  </>
+                )}
               </motion.div>
             </>
           )}
         </AnimatePresence>
 
         {Array.isArray(offering.links) && offering.links.length > 0 && (
-          <ul className="mt-8 flex flex-wrap gap-4">
+          <ul className={cn(classes.buttons({ variant }), 'flex flex-wrap gap-4')}>
             {offering.links.map(({ key, link }) => {
               const { key: _, ...linkProps } = link
               return (
                 <li key={key} className="w-full lg:w-min">
-                  <CMSLink {...linkProps} className="w-full" />
+                  <CMSLink {...linkProps} className={cn(classes.buttons({ theme }), 'w-full')} />
                 </li>
               )
             })}
