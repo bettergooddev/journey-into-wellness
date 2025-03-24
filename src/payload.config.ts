@@ -12,7 +12,8 @@ import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
 import { Offerings } from './collections/Offerings'
-import { Testimonials } from './collections/Testimonials/Testimonials'
+import { Testimonials } from './collections/Testimonials'
+import { Qualifications } from './collections/Qualifications'
 import { Footer } from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
@@ -64,7 +65,7 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
   }),
-  collections: [Pages, Posts, Media, Categories, Users, Offerings, Testimonials],
+  collections: [Pages, Posts, Media, Categories, Users, Offerings, Testimonials, Qualifications],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [

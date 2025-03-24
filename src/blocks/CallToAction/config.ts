@@ -1,6 +1,6 @@
 import type { Block } from 'payload'
 
-import { FixedToolbarFeature, HeadingFeature, InlineToolbarFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
+import { HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '../../fields/linkGroup'
 
@@ -9,22 +9,21 @@ export const CallToAction: Block = {
   interfaceName: 'CallToActionBlock',
   fields: [
     {
-      name: 'richText',
+      name: 'heading',
       type: 'richText',
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          ]
-        },
+        features: ({ rootFeatures }) => [...rootFeatures, HeadingFeature({ enabledHeadingSizes: ['h1'] })],
       }),
-      label: false,
+      label: 'Heading',
+    },
+    {
+      name: 'subheading',
+      type: 'text',
+      label: 'Subheading',
+      required: false,
     },
     linkGroup({
-      appearances: ['default', 'outline'],
+      appearances: ['default', 'primary', 'outline'],
       overrides: {
         maxRows: 2,
       },

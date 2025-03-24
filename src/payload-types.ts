@@ -74,6 +74,7 @@ export interface Config {
     users: User;
     offerings: Offering;
     testimonials: Testimonial;
+    qualifications: Qualification;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -92,6 +93,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     offerings: OfferingsSelect<false> | OfferingsSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
+    qualifications: QualificationsSelect<false> | QualificationsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -220,6 +222,10 @@ export interface Page {
     | OfferingsListBlock
     | PricingBlock
     | TestimonialsBlock
+    | FAQBlock
+    | SplitBlock
+    | AboutBlock
+    | QualificationsBlock
   )[];
   meta?: {
     title?: string | null;
@@ -419,7 +425,7 @@ export interface User {
  * via the `definition` "CallToActionBlock".
  */
 export interface CallToActionBlock {
-  richText?: {
+  heading?: {
     root: {
       type: string;
       children: {
@@ -434,6 +440,7 @@ export interface CallToActionBlock {
     };
     [k: string]: unknown;
   } | null;
+  subheading?: string | null;
   links?:
     | {
         link: {
@@ -453,7 +460,7 @@ export interface CallToActionBlock {
           /**
            * Choose how the link should be rendered.
            */
-          appearance?: ('default' | 'outline') | null;
+          appearance?: ('default' | 'primary' | 'outline') | null;
         };
         id?: string | null;
       }[]
@@ -898,6 +905,90 @@ export interface Testimonial {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FAQBlock".
+ */
+export interface FAQBlock {
+  heading: string;
+  faqs?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'faq';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SplitBlock".
+ */
+export interface SplitBlock {
+  eyebrow?: string | null;
+  heading?: string | null;
+  subheading?: string | null;
+  body?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  graphic?: (string | null) | Media;
+  clip?: ('face' | 'brain' | 'corner' | 'bubbles') | null;
+  reverse?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'split';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutBlock".
+ */
+export interface AboutBlock {
+  heading: string;
+  layout: (SplitBlock | QualificationsBlock)[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'about';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "QualificationsBlock".
+ */
+export interface QualificationsBlock {
+  /**
+   * This field automatically includes all qualifications
+   */
+  qualifications?: (string | Qualification)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'qualifications';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "qualifications".
+ */
+export interface Qualification {
+  id: string;
+  title: string;
+  issuer?: string | null;
+  description?: string | null;
+  year: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1097,6 +1188,10 @@ export interface PayloadLockedDocument {
         value: string | Testimonial;
       } | null)
     | ({
+        relationTo: 'qualifications';
+        value: string | Qualification;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: string | Redirect;
       } | null)
@@ -1199,6 +1294,10 @@ export interface PagesSelect<T extends boolean = true> {
         offeringsList?: T | OfferingsListBlockSelect<T>;
         pricing?: T | PricingBlockSelect<T>;
         testimonials?: T | TestimonialsBlockSelect<T>;
+        faq?: T | FAQBlockSelect<T>;
+        split?: T | SplitBlockSelect<T>;
+        about?: T | AboutBlockSelect<T>;
+        qualifications?: T | QualificationsBlockSelect<T>;
       };
   meta?:
     | T
@@ -1219,7 +1318,8 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "CallToActionBlock_select".
  */
 export interface CallToActionBlockSelect<T extends boolean = true> {
-  richText?: T;
+  heading?: T;
+  subheading?: T;
   links?:
     | T
     | {
@@ -1356,6 +1456,61 @@ export interface PricingBlockSelect<T extends boolean = true> {
 export interface TestimonialsBlockSelect<T extends boolean = true> {
   heading?: T;
   testimonials?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FAQBlock_select".
+ */
+export interface FAQBlockSelect<T extends boolean = true> {
+  heading?: T;
+  faqs?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SplitBlock_select".
+ */
+export interface SplitBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  heading?: T;
+  subheading?: T;
+  body?: T;
+  graphic?: T;
+  clip?: T;
+  reverse?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutBlock_select".
+ */
+export interface AboutBlockSelect<T extends boolean = true> {
+  heading?: T;
+  layout?:
+    | T
+    | {
+        split?: T | SplitBlockSelect<T>;
+        qualifications?: T | QualificationsBlockSelect<T>;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "QualificationsBlock_select".
+ */
+export interface QualificationsBlockSelect<T extends boolean = true> {
+  qualifications?: T;
   id?: T;
   blockName?: T;
 }
@@ -1568,6 +1723,18 @@ export interface TestimonialsSelect<T extends boolean = true> {
         image?: T;
       };
   name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "qualifications_select".
+ */
+export interface QualificationsSelect<T extends boolean = true> {
+  title?: T;
+  issuer?: T;
+  description?: T;
+  year?: T;
   updatedAt?: T;
   createdAt?: T;
 }

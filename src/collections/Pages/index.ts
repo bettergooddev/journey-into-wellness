@@ -11,12 +11,15 @@ import { FormBlock } from '@/blocks/Form/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { Features } from '@/blocks/Features/config'
 import { Testimonials } from '@/blocks/Testimonials/config'
+import { Split } from '@/blocks/Split/config'
+import { About } from '@/blocks/About/config'
+import { FAQ } from '@/blocks/FAQ/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
-
+import { Qualifications } from '@/blocks/Qualifications/config'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -88,6 +91,10 @@ export const Pages: CollectionConfig<'pages'> = {
                 OfferingsList,
                 Pricing,
                 Testimonials,
+                FAQ,
+                Split,
+                About,
+                Qualifications,
               ],
               required: true,
               admin: {

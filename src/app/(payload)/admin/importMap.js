@@ -10,6 +10,7 @@ import { InlineToolbarFeatureClient as InlineToolbarFeatureClient_e70f5e05f09f93
 import { FixedToolbarFeatureClient as FixedToolbarFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { InformationRowLabel as InformationRowLabel_47c1f9dd484753e2737af19e36deeca4 } from '@/blocks/OfferingsList/InformationRowLabel'
 import { OfferingRowLabel as OfferingRowLabel_7dd6a7dcd93b567d740350846aa4a430 } from '@/blocks/OfferingsList/OfferingRowLabel'
+import { QARowLabel as QARowLabel_73c152fa966d8ea15553bee77c0b8ec0 } from '@/blocks/FAQ/QARowLabel'
 import { OverviewComponent as OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaImageComponent as MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
@@ -38,6 +39,7 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#FixedToolbarFeatureClient": FixedToolbarFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@/blocks/OfferingsList/InformationRowLabel#InformationRowLabel": InformationRowLabel_47c1f9dd484753e2737af19e36deeca4,
   "@/blocks/OfferingsList/OfferingRowLabel#OfferingRowLabel": OfferingRowLabel_7dd6a7dcd93b567d740350846aa4a430,
+  "@/blocks/FAQ/QARowLabel#QARowLabel": QARowLabel_73c152fa966d8ea15553bee77c0b8ec0,
   "@payloadcms/plugin-seo/client#OverviewComponent": OverviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaTitleComponent": MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaImageComponent": MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860,

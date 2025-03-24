@@ -11,6 +11,10 @@ import { FeaturesBlock } from '@/blocks/Features/Component'
 import { OfferingsListBlock } from '@/blocks/OfferingsList/Component'
 import { PricingBlock } from '@/blocks/Pricing/Component'
 import { TestimonialsBlock } from '@/blocks/Testimonials/Component'
+import { SplitBlock } from './Split/Component'
+import { FAQBlock } from './FAQ/Component'
+import { AboutBlock } from './About/Component'
+import { QualificationsBlock } from './Qualifications/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -22,6 +26,10 @@ const blockComponents = {
   offeringsList: OfferingsListBlock,
   pricing: PricingBlock,
   testimonials: TestimonialsBlock,
+  split: SplitBlock,
+  faq: FAQBlock,
+  about: AboutBlock,
+  qualifications: QualificationsBlock,
 }
 
 export const RenderBlocks: React.FC<{
