@@ -19,7 +19,7 @@ export const OfferingsListBlock: React.FC<OfferingsListBlockProps> = (props) => 
 
       {pitches.map(({ key, ...pitch }, index) => (
         <div
-          className="relative -mb-24 -mt-[4rem] rounded-t-[4rem] bg-gradient-to-b from-primary-100 to-secondary-light pb-[4rem] pt-[1.35rem] lg:-mt-[8rem] lg:rounded-t-[8rem] lg:pb-[8rem] lg:pt-[8rem] [&:last-child]:pb-0"
+          className="relative -mt-[4rem] mb-section rounded-t-[4rem] bg-gradient-to-b from-primary-100 to-secondary-light pb-[4rem] pt-[1.35rem] lg:-mb-24 lg:-mt-[8rem] lg:rounded-t-[8rem] lg:pb-[8rem] lg:pt-[8rem] [&:last-child]:pb-0"
           key={key}
         >
           <div className="container-large">

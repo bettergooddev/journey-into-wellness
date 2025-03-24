@@ -4,6 +4,7 @@ import { authenticated } from '../../access/authenticated'
 import { anyone } from '../../access/anyone'
 import { linkGroup } from '@/fields/linkGroup'
 import { BoldFeature, lexicalEditor, UnorderedListFeature } from '@payloadcms/richtext-lexical'
+import { computeDiscountedPrice } from './hooks/computeDiscountedPrice'
 
 const Discount: Field[] = [
   {
@@ -45,6 +46,14 @@ const Price: Field[] = [
       components: {
         Description: '@/collections/Offerings/PriceDescription#PriceDescription',
       },
+    },
+  },
+  {
+    name: 'discountedPrice',
+    type: 'number',
+    admin: {
+      readOnly: true,
+      hidden: true,
     },
   },
   ...Discount,
@@ -112,4 +121,7 @@ export const Offerings: CollectionConfig = {
       },
     }),
   ],
+  hooks: {
+    beforeChange: [computeDiscountedPrice],
+  },
 }

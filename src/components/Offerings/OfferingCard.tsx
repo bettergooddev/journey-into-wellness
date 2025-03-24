@@ -49,7 +49,7 @@ const classes = {
     variants: {
       variant: {
         pitch: 'mt-8',
-        price: 'mt-auto pt-2',
+        price: 'mt-2',
       },
       theme: {
         default: 'border-secondary bg-secondary text-[var(--text-base)]',
@@ -211,6 +211,24 @@ export function OfferingCard({
             </>
           )}
         </AnimatePresence>
+
+        {variant === 'price' && (
+          <>
+            {offering.enableDiscount ? (
+              <div className="mb-2 mt-auto flex flex-row items-baseline gap-2 pt-2">
+                <h3 className="">{`$${offering.discountedPrice}`}</h3>
+                <span className="!type-caption opacity-65">
+                  <span className="line-through">{`$${offering.price}`}</span>
+                  <span className="">{` (${offering.discountType === 'percentage' ? `${offering.discountAmount}% off` : `$${offering.discountAmount} off)`}`}</span>
+                </span>
+              </div>
+            ) : (
+              <div className="mb-2 mt-auto pt-2">
+                <h3 className="">{`$${offering.price}`}</h3>
+              </div>
+            )}
+          </>
+        )}
 
         {Array.isArray(offering.links) && offering.links.length > 0 && (
           <ul className={cn(classes.buttons({ variant }), 'flex flex-wrap gap-4')}>

@@ -802,6 +802,7 @@ export interface Offering {
   type: 'session' | 'course' | 'bundle';
   name: string;
   price: number;
+  discountedPrice?: number | null;
   enableDiscount?: boolean | null;
   discountType?: ('fixed' | 'percentage') | null;
   discountAmount?: number | null;
@@ -1476,6 +1477,7 @@ export interface OfferingsSelect<T extends boolean = true> {
   type?: T;
   name?: T;
   price?: T;
+  discountedPrice?: T;
   enableDiscount?: T;
   discountType?: T;
   discountAmount?: T;
