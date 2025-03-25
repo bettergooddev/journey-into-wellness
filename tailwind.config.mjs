@@ -188,7 +188,7 @@ const config = {
         },
         '.clip-face': {
           clipPath: "url('#faceClip')",
-          aspectRatio: '557 / 793',
+          aspectRatio: '732 / 793',
           width: '100%!important',
           height: 'auto!important',
         },
