@@ -440,7 +440,6 @@ export interface CallToActionBlock {
     };
     [k: string]: unknown;
   } | null;
-  subheading?: string | null;
   links?:
     | {
         link: {
@@ -1320,7 +1319,6 @@ export interface PagesSelect<T extends boolean = true> {
  */
 export interface CallToActionBlockSelect<T extends boolean = true> {
   heading?: T;
-  subheading?: T;
   links?:
     | T
     | {

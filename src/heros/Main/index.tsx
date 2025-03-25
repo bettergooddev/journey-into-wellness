@@ -16,7 +16,7 @@ export const MainHero: React.FC<Page['hero']> = ({ links, media, heading, subhea
   })
 
   return (
-    <section className="relative flex items-center justify-center overflow-hidden text-center [&_*]:text-secondary-light">
+    <section className="relative flex items-center justify-center overflow-hidden text-center">
       <div className="-mt-6 flex flex-col">
         {heading && <RichText className="-mb-5 [&_*]:!m-0" data={heading} enableGutter={false} />}
         {subheading && <RichText className="mt-8 [&_*]:!m-0" data={subheading} enableGutter={false} />}

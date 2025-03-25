@@ -16,12 +16,12 @@ export const CallToAction: Block = {
       }),
       label: 'Heading',
     },
-    {
-      name: 'subheading',
-      type: 'text',
-      label: 'Subheading',
-      required: false,
-    },
+    // {
+    //   name: 'subheading',
+    //   type: 'text',
+    //   label: 'Subheading',
+    //   required: false,
+    // },
     linkGroup({
       appearances: ['default', 'primary', 'outline'],
       overrides: {
