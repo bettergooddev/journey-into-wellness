@@ -23,6 +23,8 @@ const buttonVariants = cva(
         default: 'bg-secondary-light hover:brightness-90 pb-2.5 px-6 !text-secondary font-light ',
         primary: 'bg-primary hover:brightness-90 !text-secondary-light font-light pb-2.5 px-6',
         outline: '!bg-transparent border border-secondary/50 hover:brightness-90 text-secondary font-light pb-2.5 px-6 ',
+        'outline-primary':
+          '!bg-transparent border border-primary/50 hover:brightness-90 text-primary font-light pb-2.5 px-6 ',
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         // ghost: 'hover:bg-card hover:text-accent-foreground',
         ghost: '',
