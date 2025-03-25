@@ -17,7 +17,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = (props) => {
   const links = appendKeys(linksProp, { shallow: true })
 
   const style = {
-    '--ring-size': '80vw',
+    '--ring-size': '70vw',
     '--ring-delta': '8vw',
   } as React.CSSProperties
 

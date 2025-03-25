@@ -28,7 +28,7 @@ export const FAQBlock: React.FC<FAQBlockProps> = (props) => {
               <motion.p
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="type-body pb-4 pt-2 !opacity-65"
+                className="type-body max-w-[52ch] pb-4 pt-2 !opacity-65"
               >
                 {faq.answer}
               </motion.p>
