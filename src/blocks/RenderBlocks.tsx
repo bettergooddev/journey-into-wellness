@@ -49,8 +49,9 @@ export const RenderBlocks: React.FC<{
             const Block = blockComponents[blockType]
 
             if (Block) {
+              const { sectionId = null } = block as { sectionId: string | null }
               return (
-                <section className="my-section" key={index}>
+                <section className="my-section" key={index} {...(sectionId ? { id: sectionId } : {})}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
                   <Block {...block} disableInnerContainer />
                 </section>

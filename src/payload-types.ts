@@ -789,6 +789,7 @@ export interface OfferingsListBlock {
   heading?: string | null;
   pitches: {
     offering: string | Offering;
+    sectionId?: string | null;
     information?:
       | {
           icon: string | Media;
@@ -957,6 +958,7 @@ export interface SplitBlock {
  * via the `definition` "AboutBlock".
  */
 export interface AboutBlock {
+  sectionId?: string | null;
   heading: string;
   layout: (SplitBlock | QualificationsBlock)[];
   id?: string | null;
@@ -1427,6 +1429,7 @@ export interface OfferingsListBlockSelect<T extends boolean = true> {
     | T
     | {
         offering?: T;
+        sectionId?: T;
         information?:
           | T
           | {
@@ -1498,6 +1501,7 @@ export interface SplitBlockSelect<T extends boolean = true> {
  * via the `definition` "AboutBlock_select".
  */
 export interface AboutBlockSelect<T extends boolean = true> {
+  sectionId?: T;
   heading?: T;
   layout?:
     | T

@@ -7,6 +7,13 @@ export const About: Block = {
   interfaceName: 'AboutBlock',
   fields: [
     {
+      name: 'sectionId',
+      type: 'text',
+      admin: {
+        hidden: true,
+      },
+    },
+    {
       name: 'heading',
       type: 'text',
       required: true,

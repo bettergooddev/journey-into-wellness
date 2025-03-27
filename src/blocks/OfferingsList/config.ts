@@ -31,6 +31,13 @@ const Pitch: Field[] = [
     required: true,
   },
   {
+    name: 'sectionId',
+    type: 'text',
+    admin: {
+      hidden: true,
+    },
+  },
+  {
     name: 'information',
     type: 'array',
     minRows: 3,
