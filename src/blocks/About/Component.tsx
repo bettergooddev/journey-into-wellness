@@ -13,7 +13,7 @@ export const AboutBlock: React.FC<AboutBlockProps> = (props) => {
         <h2 className="container-small pb-[4rem] text-primary-50 lg:pb-[8rem]">{heading}</h2>
       </div>
 
-      <div className="[&>*:first-child]:mt-6rem relative -mt-[4rem] mb-section rounded-t-[4rem] bg-gradient-to-b from-primary-100 to-secondary-light pt-[1.35rem] lg:-mt-[8rem] lg:rounded-t-[8rem]">
+      <div className="relative -mt-[4rem] mb-section rounded-t-[4rem] bg-gradient-to-b from-primary-100 to-secondary-light pt-[1.35rem] lg:-mt-[8rem] lg:rounded-t-[8rem] [&>:first-child]:mt-[0rem] lg:[&>:first-child]:mt-[6rem]">
         <RenderBlocks blocks={layout} />
       </div>
     </>
