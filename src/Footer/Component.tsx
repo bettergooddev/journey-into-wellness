@@ -60,8 +60,8 @@ export async function Footer() {
                 <h4 className="">{section.heading}</h4>
                 {Array.isArray(section.links) && section.links.length > 0 && (
                   <ul className="flex flex-col gap-0.5">
-                    {section.links.map((linkItem) => (
-                      <li key={linkItem.id}>
+                    {section.links.map(({ key, ...linkItem }) => (
+                      <li key={key}>
                         <CMSLink
                           {...linkItem.link}
                           appearance="link"
