@@ -1,7 +1,8 @@
 /** @file src/lib/tailwind/outline-tools.js */
-const plugin = require('tailwindcss/plugin')
+import plugin from 'tailwindcss/plugin'
+import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette'
 
-module.exports = plugin(
+export default plugin(
   function ({ matchUtilities, theme }) {
     //
     // 1) outline-x-* utilities (left + right)
@@ -193,8 +194,6 @@ module.exports = plugin(
     //
     // 7) outline-* color utilities
     //
-    const flattenColorPalette = require('tailwindcss/lib/util/flattenColorPalette').default
-
     matchUtilities(
       {
         outline: (value) => ({
