@@ -16,7 +16,11 @@ export const FAQBlock: React.FC<FAQBlockProps> = (props) => {
 
       <Accordion type="single" collapsible className="w-full">
         {faqs?.map(({ key, ...faq }, i) => (
-          <AccordionItem key={key} value={`item-${i}`}>
+          <AccordionItem
+            key={key}
+            value={`item-${i}`}
+            className="peer relative rounded-xl border-0 px-6 transition-colors after:absolute after:bottom-0 after:left-1/2 after:h-[1px] after:w-[calc(100%-1.5rem)] after:-translate-x-1/2 after:bg-secondary-dark/10 after:transition-colors hover:bg-secondary-100/50 data-[state=open]:bg-secondary-100/50"
+          >
             <AccordionTrigger className="py-4 hover:no-underline [&_svg]:stroke-secondary-dark">
               <h4 className="type-body font-medium">{faq.question}</h4>
             </AccordionTrigger>
