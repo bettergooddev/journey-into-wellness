@@ -10,6 +10,7 @@ import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical
 
 import { fields } from './fields'
 import { getClientSideURL } from '@/utilities/getURL'
+import Link from 'next/link'
 
 export type FormBlockType = {
   blockName?: string
@@ -115,16 +116,30 @@ export const FormBlock: React.FC<
 
   return (
     <>
-      {/*   
-      <div className="container lg:max-w-[48rem]">
+      <div className="container-small -my-[4rem] text-secondary lg:max-w-[38rem]">
         {enableIntro && introContent && !hasSubmitted && (
-          <RichText className="mb-8 lg:mb-12" data={introContent} enableGutter={false} />
+          <RichText
+            className="mb-8 !text-secondary lg:mb-12 [&_*]:!text-secondary"
+            data={introContent}
+            enableGutter={false}
+          />
         )}
-        <div className="rounded-[0.8rem] border border-border p-4 lg:p-6">
+        <div className="">
           <FormProvider {...formMethods}>
-            {!isLoading && hasSubmitted && confirmationType === 'message' && <RichText data={confirmationMessage} />}
-            {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
+            {!isLoading && hasSubmitted && confirmationType === 'message' && (
+              <div className="flex flex-col justify-center">
+                <RichText
+                  className="!m-0 p-0 text-center !text-secondary [&>h2]:mb-3 [&_*]:!text-secondary"
+                  data={confirmationMessage}
+                />
+                <Button variant="secondary" className="mx-auto mt-8" asChild>
+                  <Link href="/">Back to Home</Link>
+                </Button>
+              </div>
+            )}
+            {isLoading && !hasSubmitted && <p className="text-secondary">Loading, please wait...</p>}
             {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
+
             {!hasSubmitted && (
               <form id={formID} onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-4 last:mb-0">
@@ -150,15 +165,15 @@ export const FormBlock: React.FC<
                       return null
                     })}
                 </div>
-  
-                <Button form={formID} type="submit" variant="default">
+
+                <Button form={formID} type="submit" variant="secondary" className="mt-4">
                   {submitButtonLabel}
                 </Button>
               </form>
             )}
           </FormProvider>
         </div>
-      </div> */}
+      </div>
     </>
   )
 }
