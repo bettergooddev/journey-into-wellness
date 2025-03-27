@@ -16,21 +16,16 @@ export const CallToActionBlock: React.FC<CTABlockProps> = (props) => {
   } = props
   const links = appendKeys(linksProp, { shallow: true })
 
-  const style = {
-    '--ring-size': '70vw',
-    '--ring-delta': '8vw',
-  } as React.CSSProperties
-
   return (
     <>
-      <div className="relative -mb-section overflow-hidden" style={style}>
+      <div className="relative -mb-section overflow-hidden [--ring-delta:8vw] [--ring-size:130vw] md:[--ring-size:110vw] lg:[--ring-size:70vw]">
         <div className="absolute inset-0 z-0">
           <div className="pointer-events-none absolute inset-0 left-1/2 z-0 aspect-square w-[var(--ring-size)] -translate-x-1/2 rounded-full border-2 border-dashed border-primary/50" />
           <div className="pointer-events-none absolute inset-0 left-1/2 top-[calc(var(--ring-delta)/2)] z-0 aspect-square w-[calc(var(--ring-size)_-_var(--ring-delta))] -translate-x-1/2 rounded-full border-2 border-dashed border-primary/50" />
           <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent to-secondary-light" />
         </div>
 
-        <div className="container-small relative z-10 pb-[7rem] pt-[12rem] text-center">
+        <div className="container-small relative z-10 pb-16 pt-24 text-center md:pt-[10rem] lg:pb-[7rem] lg:pt-[12rem]">
           {heading && (
             <RichText
               className="!type-h1 [&_*]:!type-h1 !-mb-4 [&_*]:!m-0 [&_*]:!text-secondary"
