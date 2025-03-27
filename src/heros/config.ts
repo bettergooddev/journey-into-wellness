@@ -22,6 +22,10 @@ export const hero: Field = {
           label: 'Main',
           value: 'main',
         },
+        {
+          label: 'Subtle',
+          value: 'subtle',
+        },
       ],
       required: true,
     },
@@ -29,9 +33,17 @@ export const hero: Field = {
       name: 'heading',
       type: 'richText',
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => [...rootFeatures, HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] })],
+        features: ({ rootFeatures }) => [...rootFeatures, HeadingFeature({ enabledHeadingSizes: ['h1'] })],
       }),
       label: 'Heading',
+    },
+    {
+      name: 'description',
+      type: 'textarea',
+      label: 'Description',
+      admin: {
+        condition: (_, { type } = {}) => ['subtle', 'none'].includes(type),
+      },
     },
     {
       name: 'subheading',
@@ -40,10 +52,16 @@ export const hero: Field = {
         features: ({ rootFeatures }) => [...rootFeatures, HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] })],
       }),
       label: 'Subheading',
+      admin: {
+        condition: (_, { type } = {}) => ['main', 'none'].includes(type),
+      },
     },
     linkGroup({
       overrides: {
         maxRows: 2,
+        admin: {
+          condition: (_, { type } = {}) => ['main', 'none'].includes(type),
+        },
       },
     }),
     {

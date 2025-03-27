@@ -155,7 +155,7 @@ export interface Page {
   id: string;
   title: string;
   hero: {
-    type: 'none' | 'main';
+    type: 'none' | 'main' | 'subtle';
     heading?: {
       root: {
         type: string;
@@ -171,6 +171,7 @@ export interface Page {
       };
       [k: string]: unknown;
     } | null;
+    description?: string | null;
     subheading?: {
       root: {
         type: string;
@@ -1265,6 +1266,7 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         type?: T;
         heading?: T;
+        description?: T;
         subheading?: T;
         links?:
           | T
