@@ -27,7 +27,7 @@ export const OfferingsListBlock: React.FC<OfferingsListBlockProps> = (props) => 
           >
             <div className="container-large">
               <div className="grid items-center gap-x-24 lg:grid-cols-2 lg:grid-rows-[auto,auto]">
-                <OfferingCard offering={pitch.offering} />
+                <OfferingCard offering={pitch.offering} {...(sectionId ? { id: sectionId } : {})} />
                 <OfferingPitch pitch={pitch} index={index} />
               </div>
             </div>

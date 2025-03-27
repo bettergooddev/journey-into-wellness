@@ -19,11 +19,12 @@ import { getServerSideURL } from '@/utilities/getURL'
 import { acuminPro, macgen } from './fonts'
 import { ClipDefs } from '@/components/clips'
 import { Navigation } from '@/components/Navigation/Component'
+import { Lenis } from '@/providers/Lenis'
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
-
   return (
-    <html className={cn(acuminPro.variable, macgen.variable)} lang="en" suppressHydrationWarning>
+    <html className={cn(acuminPro.variable, macgen.variable, '')} lang="en" suppressHydrationWarning>
       <head>
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
@@ -31,6 +32,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body className="bg-secondary-light">
         <Providers>
+          <Lenis />
           {/* <AdminBar
             adminBarProps={{
               preview: isEnabled,
