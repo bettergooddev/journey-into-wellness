@@ -5,6 +5,9 @@ import '@payloadcms/next/css'
 import type { ServerFunctionClient } from 'payload'
 import { handleServerFunctions, RootLayout } from '@payloadcms/next/layouts'
 import React from 'react'
+import { NextSSRPlugin } from '@uploadthing/react/next-ssr-plugin'
+import { extractRouterConfig } from 'uploadthing/server'
+import { ourFileRouter } from './api/uploadthing/core'
 
 import { importMap } from './admin/importMap.js'
 import './custom.scss'
@@ -24,6 +27,7 @@ const serverFunction: ServerFunctionClient = async function (args) {
 
 const Layout = ({ children }: Args) => (
   <RootLayout config={config} importMap={importMap} serverFunction={serverFunction}>
+    <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
     {children}
   </RootLayout>
 )
