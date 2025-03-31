@@ -18,8 +18,16 @@ export const MainHero: React.FC<Page['hero']> = ({ links, media, heading, subhea
   return (
     <section className="relative flex items-center justify-center overflow-hidden text-center">
       <div className="container-large -mt-6 flex flex-col">
-        {heading && <RichText className="-mb-5 [&_*]:!m-0" data={heading} enableGutter={false} />}
-        {subheading && <RichText className="mt-8 [&_*]:!m-0" data={subheading} enableGutter={false} />}
+        {heading && (
+          <RichText
+            className="-mb-5 text-secondary-light [&_*]:!m-0 [&_*]:text-center [&_*]:text-secondary-light"
+            data={heading}
+            enableGutter={false}
+          />
+        )}
+        {subheading && (
+          <RichText className="[&_*]:text-se mt-8 text-secondary-light [&_*]:!m-0" data={subheading} enableGutter={false} />
+        )}
 
         {Array.isArray(links) && links.length > 0 && (
           <ul className="mt-12 flex justify-center gap-4">
