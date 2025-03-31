@@ -1,3 +1,5 @@
+'use client'
+
 import { Avatar, AvatarImage, AvatarFallback } from '@radix-ui/react-avatar'
 
 import { CarouselItem } from '../ui/carousel'
