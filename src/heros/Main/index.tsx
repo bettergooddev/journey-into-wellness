@@ -8,6 +8,17 @@ import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 import { motion } from 'motion/react'
+import { float, fade, staggerContainer } from '@/utilities/animations'
+
+let animations = {
+  parent: staggerContainer,
+  child: {
+    float,
+    fade,
+  },
+}
+animations.child.float.show.transition.duration = 1.25
+animations.child.fade.show.transition.delay = 0.9
 
 export const MainHero: React.FC<Page['hero']> = ({ links, media, heading, subheading }) => {
   const { setHeaderTheme } = useHeaderTheme()
@@ -18,14 +29,15 @@ export const MainHero: React.FC<Page['hero']> = ({ links, media, heading, subhea
 
   return (
     <section className="relative flex items-center justify-center overflow-hidden text-center">
-      <div className="container-large -mt-6 flex flex-col">
+      <motion.div
+        className="container-large -mt-6 flex flex-col"
+        viewport={{ once: true }}
+        initial="hidden"
+        whileInView="show"
+        variants={animations.parent}
+      >
         {heading && (
-          <motion.div
-            initial={{ opacity: 0, scaleX: 1.05 }}
-            whileInView={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 2, type: 'spring', bounce: 0 }}
-            viewport={{ once: true }}
-          >
+          <motion.div variants={animations.child.float}>
             <RichText
               className="-mb-5 text-secondary-light [&_*]:!m-0 [&_*]:text-center [&_*]:text-secondary-light"
               data={heading}
@@ -34,11 +46,17 @@ export const MainHero: React.FC<Page['hero']> = ({ links, media, heading, subhea
           </motion.div>
         )}
         {subheading && (
-          <RichText className="[&_*]:text-se mt-8 text-secondary-light [&_*]:!m-0" data={subheading} enableGutter={false} />
+          <motion.div variants={animations.child.float}>
+            <RichText
+              className="[&_*]:text-se mt-8 text-secondary-light [&_*]:!m-0"
+              data={subheading}
+              enableGutter={false}
+            />
+          </motion.div>
         )}
 
         {Array.isArray(links) && links.length > 0 && (
-          <ul className="mt-12 flex justify-center gap-4">
+          <motion.ul className="mt-12 flex justify-center gap-4" variants={animations.child.fade}>
             {links.map(({ link }, i) => {
               return (
                 <li key={i}>
@@ -46,9 +64,9 @@ export const MainHero: React.FC<Page['hero']> = ({ links, media, heading, subhea
                 </li>
               )
             })}
-          </ul>
+          </motion.ul>
         )}
-      </div>
+      </motion.div>
 
       <div className="min-h-[90vh] select-none">
         {media && typeof media === 'object' && (
