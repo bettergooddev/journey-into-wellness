@@ -3,7 +3,6 @@ import { Carousel, CarouselContent, CarouselNext, CarouselPrevious } from '../ui
 import { TestimonialsCard } from './TestimonialsCard'
 import { appendKeys } from '@/utilities/appendKeys'
 import type { TestimonialsBlock as TestimonialsBlockProps } from '@/payload-types'
-import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
 
 export function TestimonialsCarousel({
   testimonials: testimonialsProp,
@@ -19,7 +18,6 @@ export function TestimonialsCarousel({
         align: 'center',
         loop: true,
       }}
-      plugins={WheelGesturesPlugin()}
       className="w-full"
     >
       <CarouselContent className="">
