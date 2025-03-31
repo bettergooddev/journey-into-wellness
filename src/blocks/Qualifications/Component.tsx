@@ -29,7 +29,7 @@ export const QualificationsBlock: React.FC<QualificationsBlockProps> = (props) =
         <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
           {secondaryQualifications.map(({ key, ...qualification }) => (
             <div key={key} className="flex flex-col rounded-[2rem] bg-primary-light/50 p-8 py-6">
-              <p className="type-caption opacity-65">{qualification.year}</p>
+              <p className="type-caption !font-light opacity-65">{qualification.year}</p>
               <h4 className="mt-1">{qualification.title}</h4>
             </div>
           ))}
