@@ -8,7 +8,7 @@ import { CMSLink } from '@/components/Link'
 import { cn } from '@/utilities/ui'
 import { appendKeys } from '@/utilities/appendKeys'
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube, FaGithub } from 'react-icons/fa'
-
+import BetterGoodTag from '@/components/ui/better-good-tag'
 // Map social media platform names to their corresponding icons
 const socialIconMap = {
   facebook: FaFacebook,
@@ -65,6 +65,7 @@ export async function Footer() {
           </div>
         </div>
       </footer>
+      <BetterGoodTag />
     </>
   )
 }

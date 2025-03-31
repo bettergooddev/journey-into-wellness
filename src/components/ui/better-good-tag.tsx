@@ -9,20 +9,22 @@ function BetterGoodTag({}) {
 
   return (
     <>
-      <div className="items-left flex flex-wrap justify-between gap-2 !py-4 sm:flex-row sm:items-center sm:gap-8">
-        <p className="type-caption sm:type-body font-normal">
-          <span className="text-primary-lightest">Website By: </span>
-          <Button variant={'link'} asChild>
-            <Link
-              href={'https://bettergoodagency.com/'}
-              className="type-caption text-primary-lightest sm:type-body after:bg-primary-lightest h-min !p-0 font-normal after:top-full"
-              target="_blank"
-            >
-              Better Good
-            </Link>
-          </Button>
-        </p>
-        <span className="type-caption text-primary-lightest sm:type-body font-normal">{`© ${year} ${process.env.NEXT_PUBLIC_COMPANY_NAME}`}</span>
+      <div className="type-caption [&_*]:type-caption bg-primary-200/75 !font-light text-primary [&_*]:!font-light [&_*]:text-primary">
+        <div className="items-left container-large flex flex-wrap justify-between gap-2 !py-4 sm:flex-row sm:items-center sm:gap-8">
+          <p className="">
+            <span className="text-primary-lightest">Website By: </span>
+            <Button variant={'link'} asChild>
+              <Link
+                href={'https://bettergoodagency.com/'}
+                className="text-primary-lightest after:bg-primary-lightest h-min !p-0 after:top-full"
+                target="_blank"
+              >
+                Better Good
+              </Link>
+            </Button>
+          </p>
+          <span className="text-primary-lightest">{`© ${year} ${process.env.NEXT_PUBLIC_COMPANY_NAME}`}</span>
+        </div>
       </div>
     </>
   )
