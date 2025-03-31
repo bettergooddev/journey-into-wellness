@@ -1,6 +1,6 @@
 // storage-adapter-import-placeholder
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
 import sharp from 'sharp' // sharp-import
 import path from 'path'
@@ -72,15 +72,13 @@ export default buildConfig({
   plugins: [
     ...plugins,
     // storage-adapter-placeholder
-    uploadthingStorage({
-      clientUploads: true,
+    vercelBlobStorage({
+      enabled: true,
       collections: {
         media: true,
       },
-      options: {
-        token: process.env.UPLOADTHING_TOKEN,
-        acl: 'public-read',
-      },
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+      clientUploads: true, // Enable client uploads to bypass Vercel server upload limits
     }),
   ],
   secret: process.env.PAYLOAD_SECRET,
