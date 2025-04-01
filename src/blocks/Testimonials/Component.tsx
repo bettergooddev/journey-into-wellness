@@ -7,6 +7,7 @@ import { TestimonialsCarousel } from '@/components/Testimonials'
 
 export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = (props) => {
   const { heading, testimonials } = props
+
   return (
     <>
       {testimonials && (
