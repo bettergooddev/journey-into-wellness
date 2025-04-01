@@ -10,7 +10,7 @@ import RichText from '@/components/RichText'
 import { motion } from 'motion/react'
 import { float, fade, staggerContainer } from '@/utilities/animations'
 
-let animations = {
+const animations = {
   parent: staggerContainer,
   child: {
     float,
