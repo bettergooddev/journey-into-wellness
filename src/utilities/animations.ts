@@ -28,7 +28,7 @@ export const fade = {
 }
 
 export const float = {
-  hidden: { opacity: 0, scaleX: 1.03 },
+  hidden: { opacity: 0, scaleX: 1.05 },
   show: {
     willChange: 'opacity, transform',
     opacity: 1,
