@@ -18,7 +18,7 @@ export const SubtleHero: React.FC<Page['hero']> = ({ media, heading, description
     <section className="relative flex items-center justify-start overflow-hidden text-left text-secondary-light">
       <div className="container-large flex flex-col">
         {heading && (
-          <RichText className="!type-h1 [&_*]:!type-h1 !m-0 -mb-5 [&_*]:!m-0" data={heading} enableGutter={false} />
+          <RichText className="!m-0 !mb-6 [&_*]:!m-0 [&_h4]:!mb-3.5 [&_h4]:opacity-75" data={heading} enableGutter={false} />
         )}
         {description && <p className="!m-0 mt-12 max-w-[68ch]">{description}</p>}
       </div>

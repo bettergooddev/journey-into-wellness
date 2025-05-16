@@ -33,7 +33,7 @@ export const hero: Field = {
       name: 'heading',
       type: 'richText',
       editor: lexicalEditor({
-        features: ({ rootFeatures }) => [...rootFeatures, HeadingFeature({ enabledHeadingSizes: ['h1'] })],
+        features: ({ rootFeatures }) => [...rootFeatures, HeadingFeature({ enabledHeadingSizes: ['h1', 'h4'] })],
       }),
       label: 'Heading',
     },
