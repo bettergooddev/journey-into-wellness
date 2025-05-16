@@ -212,6 +212,7 @@ export interface Page {
         }[]
       | null;
     media: string | Media;
+    poster?: (string | null) | Media;
   };
   layout: (
     | CallToActionBlock
@@ -1286,6 +1287,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
             };
         media?: T;
+        poster?: T;
       };
   layout?:
     | T

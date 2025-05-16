@@ -24,6 +24,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/media/:path*',
+        destination: '/api/media/file/:path*',
+      },
+    ]
+  },
   reactStrictMode: true,
   redirects,
 }

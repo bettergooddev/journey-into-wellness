@@ -1,6 +1,6 @@
 'use client'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import type { Page } from '@/payload-types'
 
@@ -20,8 +20,9 @@ const animations = {
 animations.child.float.show.transition.duration = 1.25
 animations.child.fade.show.transition.delay = 0.9
 
-export const MainHero: React.FC<Page['hero']> = ({ links, media, heading, subheading }) => {
+export const MainHero: React.FC<Page['hero']> = ({ links, media, poster, heading, subheading }) => {
   const { setHeaderTheme } = useHeaderTheme()
+  const [mediaLoaded, setMediaLoaded] = useState(false)
 
   useEffect(() => {
     setHeaderTheme('dark')
@@ -71,7 +72,23 @@ export const MainHero: React.FC<Page['hero']> = ({ links, media, heading, subhea
       <div className="min-h-[90vh] select-none">
         {media && typeof media === 'object' && (
           <>
-            <Media fill imgClassName="-z-10 object-cover scale-110" priority resource={media} />
+            {poster && (
+              <Media
+                fill
+                imgClassName={`${mediaLoaded ? 'opacity-0' : 'opacity-100'} -z-10 object-cover scale-110 transition-opacity duration-200`}
+                videoClassName={`${mediaLoaded ? 'opacity-0' : 'opacity-100'} -z-10 object-cover scale-110 transition-opacity duration-200`}
+                priority
+                resource={poster}
+              />
+            )}
+            <Media
+              fill
+              imgClassName="-z-[11] object-cover scale-110"
+              videoClassName="-z-[11] object-cover scale-110"
+              priority
+              resource={media}
+              onLoad={() => setMediaLoaded(true)}
+            />
             <div className="absolute inset-0 -z-10 bg-primary-dark/40 bg-blend-multiply" />
           </>
         )}

@@ -70,6 +70,11 @@ export const hero: Field = {
       relationTo: 'media',
       required: true,
     },
+    {
+      name: 'poster',
+      type: 'upload',
+      relationTo: 'media',
+    },
   ],
   label: false,
 }
