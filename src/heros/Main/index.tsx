@@ -75,8 +75,8 @@ export const MainHero: React.FC<Page['hero']> = ({ links, media, poster, heading
             {poster && (
               <Media
                 fill
-                imgClassName={`${mediaLoaded ? 'opacity-0' : 'opacity-100'} -z-10 object-cover scale-110 transition-opacity duration-500`}
-                videoClassName={`${mediaLoaded ? 'opacity-0' : 'opacity-100'} -z-10 object-cover scale-110 transition-opacity duration-500`}
+                imgClassName={`${mediaLoaded ? 'opacity-0' : 'opacity-100'} -z-10 object-cover scale-110 transition-opacity duration-100`}
+                videoClassName={`${mediaLoaded ? 'opacity-0' : 'opacity-100'} -z-10 object-cover scale-110 transition-opacity duration-100`}
                 priority
                 resource={poster}
               />
