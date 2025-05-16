@@ -7,7 +7,7 @@ import type { Footer as FooterType } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { cn } from '@/utilities/ui'
 import { appendKeys } from '@/utilities/appendKeys'
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube, FaGithub } from 'react-icons/fa'
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube, FaGithub, FaPinterest } from 'react-icons/fa'
 import BetterGoodTag from '@/components/ui/better-good-tag'
 // Map social media platform names to their corresponding icons
 const socialIconMap = {
@@ -17,6 +17,7 @@ const socialIconMap = {
   twitter: FaTwitter,
   youtube: FaYoutube,
   github: FaGithub,
+  pinterest: FaPinterest,
 } as const
 
 type SocialPlatform = keyof typeof socialIconMap

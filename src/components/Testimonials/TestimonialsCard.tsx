@@ -28,7 +28,7 @@ export function TestimonialsCard({ testimonial, className }: { testimonial: Test
             </Avatar>
             <div>
               <p className="type-caption font-normal">{name}</p>
-              <p className="type-caption font-normal opacity-65">{role}</p>
+              {role && <p className="type-caption font-normal opacity-65">{role}</p>}
             </div>
           </div>
 

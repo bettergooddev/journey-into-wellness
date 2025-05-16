@@ -15,7 +15,7 @@ function BetterGoodTag({}) {
             <span className="text-primary-lightest">Website By: </span>
             <Button variant={'link'} asChild>
               <Link
-                href={'https://bettergoodagency.com/'}
+                href={'https://bettergood.agency/'}
                 className="text-primary-lightest after:bg-primary-lightest h-min !p-0 after:top-full"
                 target="_blank"
               >

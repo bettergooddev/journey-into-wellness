@@ -6,12 +6,12 @@ import type { TestimonialsBlock as TestimonialsBlockProps } from '@/payload-type
 import { TestimonialsCarousel } from '@/components/Testimonials'
 
 export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = (props) => {
-  const { heading, testimonials } = props
+  const { heading, testimonials, sectionId } = props
 
   return (
     <>
       {testimonials && (
-        <div className="mx-auto">
+        <div {...(sectionId && { id: sectionId })} className="mx-auto">
           <h2 className="-mt-6 mb-heading text-center">{heading}</h2>
           <TestimonialsCarousel testimonials={testimonials} />
         </div>

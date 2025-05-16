@@ -5,6 +5,13 @@ export const Testimonials: Block = {
   interfaceName: 'TestimonialsBlock',
   fields: [
     {
+      name: 'sectionId',
+      type: 'text',
+      admin: {
+        hidden: true,
+      },
+    },
+    {
       name: 'heading',
       type: 'text',
       required: true,

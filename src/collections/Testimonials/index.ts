@@ -46,7 +46,6 @@ export const Testimonials: CollectionConfig = {
         {
           name: 'role',
           type: 'text',
-          required: true,
         },
         {
           name: 'image',

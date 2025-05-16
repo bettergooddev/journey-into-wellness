@@ -880,6 +880,7 @@ export interface PricingBlock {
  * via the `definition` "TestimonialsBlock".
  */
 export interface TestimonialsBlock {
+  sectionId?: string | null;
   heading: string;
   /**
    * This field automatically includes all testimonials
@@ -900,7 +901,7 @@ export interface Testimonial {
   offering?: (string | null) | Offering;
   author: {
     name: string;
-    role: string;
+    role?: string | null;
     image: string | Media;
   };
   name?: string | null;
@@ -1462,6 +1463,7 @@ export interface PricingBlockSelect<T extends boolean = true> {
  * via the `definition` "TestimonialsBlock_select".
  */
 export interface TestimonialsBlockSelect<T extends boolean = true> {
+  sectionId?: T;
   heading?: T;
   testimonials?: T;
   id?: T;
